@@ -1,34 +1,56 @@
+function setPreset(type) {
+    const input = document.getElementById("textInput");
+
+    switch(type) {
+        case "facebook":
+            input.value = "https://www.facebook.com/";
+            break;
+        case "instagram":
+            input.value = "https://www.instagram.com/";
+            break;
+        case "tiktok":
+            input.value = "https://www.tiktok.com/@";
+            break;
+        case "youtube":
+            input.value = "https://www.youtube.com/";
+            break;
+        case "whatsapp":
+            input.value = "https://wa.me/";
+            break;
+    }
+}
+
 function generateQR() {
-  const textInput = document.getElementById("textInput").value.trim();
-  const qrImage = document.getElementById("qrImage");
+    const url = document.getElementById("textInput").value.trim();
+    const qr = document.getElementById("qrImage");
 
-  if (!textInput) {
-    alert("Soraty aloha ny URL!");
-    return;
-  }
+    if (!url) {
+        alert("Ampidiro aloha ny URL!");
+        return;
+    }
 
-  const qrUrl =
-    "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
-    encodeURIComponent(textInput);
+    const qrURL =
+      "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+      encodeURIComponent(url);
 
-  qrImage.classList.remove("show");
-  qrImage.src = qrUrl;
+    qr.classList.remove("show");
+    qr.src = qrURL;
 
-  setTimeout(() => {
-    qrImage.classList.add("show");
-  }, 50);
+    setTimeout(() => {
+        qr.classList.add("show");
+    }, 100);
 }
 
 function downloadQR() {
-  const qrImage = document.getElementById("qrImage");
+    const qr = document.getElementById("qrImage");
 
-  if (!qrImage.src) {
-    alert("Mamorona QR aloha!");
-    return;
-  }
+    if (!qr.src) {
+        alert("Tsy misy QR mbola novokarina!");
+        return;
+    }
 
-  const link = document.createElement("a");
-  link.href = qrImage.src;
-  link.download = "QRCode.png";
-  link.click();
+    const link = document.createElement("a");
+    link.href = qr.src;
+    link.download = "QRCode.png";
+    link.click();
 }
