@@ -7,17 +7,13 @@ function generateQR() {
     return;
   }
 
-  // Mamorona QR Code avy amin'ny URL
   const qrUrl =
     "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
     encodeURIComponent(textInput);
 
-  // Reset animation
   qrImage.classList.remove("show");
-
   qrImage.src = qrUrl;
 
-  // Animation
   setTimeout(() => {
     qrImage.classList.add("show");
   }, 50);
