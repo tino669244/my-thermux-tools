@@ -1,122 +1,87 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
 body {
-  font-family: 'Courier New', monospace; /* Terminal style */
-  background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: #fff;
+  background: #0d0d0d;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+  color: white;
 }
 
-/* Fixed name eo ambony */
-.fixed-name {
+#brand {
   position: fixed;
   top: 10px;
-  left: 20px;
-  font-size: 18px;
-  font-weight: bold;
-  color: #00ff00;
-  text-shadow: 0 0 5px #00ff00;
+  left: 15px;
+  font-size: 22px;
+  color: #00ff66;
+  font-family: "Courier New", monospace;
+  letter-spacing: 2px;
+  text-shadow: 0 0 5px #00ff6699;
 }
 
-/* Container */
 .container {
-  background: #1e1e1e;
-  padding: 30px 40px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-  text-align: center;
-  width: 350px;
-}
-
-/* Titles */
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  color: #00eaff;
-}
-p {
-  color: #ccc;
-  margin-bottom: 20px;
-}
-
-/* Input */
-input {
+  margin: 80px auto 0;
   width: 90%;
-  padding: 12px 10px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 15px;
-  font-size: 16px;
-  outline: none;
-  background: #111;
-  color: #fff;
-}
-input:focus {
-  box-shadow: 0 0 10px #00eaff;
+  max-width: 450px;
+  background: #1a1a1a;
+  padding: 25px;
+  border-radius: 14px;
+  box-shadow: 0 0 15px #00ff6644;
+  text-align: center;
 }
 
-/* Buttons */
-button {
-  padding: 12px 20px;
-  border-radius: 8px;
+.social-menu button {
+  background: #333;
   border: none;
-  background: #00eaff;
-  color: #111;
+  padding: 10px 14px;
+  margin: 4px;
+  border-radius: 7px;
+  color: white;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.social-menu button:hover {
+  background: #00ff66;
+  color: #000;
+}
+
+input {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  margin-top: 15px;
+  border-radius: 7px;
+  outline: none;
   font-size: 16px;
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  margin-top: 12px;
+  background: #00ff66;
+  border: none;
+  color: black;
   font-weight: bold;
-  margin: 5px;
-  transition: 0.3s;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: 0.2s;
 }
+
 button:hover {
-  transform: scale(1.05);
-  background: #00b8c7;
+  background: #00cc55;
 }
 
-/* QR Box */
-.qr-box {
-  margin-top: 25px;
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  min-height: 220px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.qr-box img {
+.qr {
+  margin-top: 22px;
   width: 200px;
-  height: 200px;
+  display: none;
   opacity: 0;
-  transform: scale(0);
-  transition: opacity 0.5s, transform 0.5s;
+  transform: scale(0.8);
+  transition: 0.3s ease-in-out;
 }
 
-.qr-box img.show {
+.qr.show {
+  display: block;
   opacity: 1;
   transform: scale(1);
-}
-
-/* Responsive */
-@media (max-width: 400px) {
-  .container {
-    width: 90%;
-  }
-  input, button {
-    width: 100%;
-  }
-  .qr-box img {
-    width: 150px;
-    height: 150px;
-  }
 }
