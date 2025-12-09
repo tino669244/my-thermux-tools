@@ -24,12 +24,12 @@ body {
   background: #1a1a1a;
   padding: 25px;
   border-radius: 14px;
-  box-shadow: 0 0 15px #00ff6644;
+  box-shadow: 0 0 14px #00ff6655;
   text-align: center;
 }
 
 .social-menu button {
-  background: #333;
+  background: #222;
   border: none;
   padding: 10px 14px;
   margin: 4px;
@@ -37,11 +37,21 @@ body {
   color: white;
   cursor: pointer;
   transition: 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 15px;
 }
 
 .social-menu button:hover {
   background: #00ff66;
   color: #000;
+}
+
+.icon {
+  width: 17px;
+  height: 17px;
+  filter: invert(1);
 }
 
 input {
