@@ -1,9 +1,5 @@
-/* Reset kely */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+/* Reset */
+* { margin:0; padding:0; box-sizing:border-box; }
 
 body {
   font-family: 'Poppins', sans-serif;
@@ -13,8 +9,26 @@ body {
   align-items: center;
   height: 100vh;
   color: #fff;
+  flex-direction: column;
 }
 
+/* Scrolling Name */
+.scroll-name {
+  position: fixed;
+  left: 0;
+  top: 10px;
+  font-size: 16px;
+  color: #00eaff;
+  white-space: nowrap;
+  animation: scrollName 10s linear infinite;
+}
+
+@keyframes scrollName {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Container */
 .container {
   background: #1e1e1e;
   padding: 30px 40px;
@@ -25,93 +39,60 @@ body {
 }
 
 /* Title */
-h1 {
-  font-size: 28px;
-  margin-bottom: 10px;
-  color: #00eaff;
-}
-
-/* Subtitle */
-p {
-  font-size: 14px;
-  margin-bottom: 20px;
-  color: #ccc;
-}
+h1 { font-size:28px; margin-bottom:10px; color:#00eaff; }
+p { font-size:14px; margin-bottom:20px; color:#ccc; }
 
 /* Input */
 input {
   width: 90%;
-  padding: 12px 10px;
-  border-radius: 8px;
-  border: none;
-  margin-bottom: 15px;
-  font-size: 16px;
-  outline: none;
-  transition: box-shadow 0.3s ease;
+  padding:12px 10px;
+  border-radius:8px;
+  border:none;
+  margin-bottom:15px;
+  font-size:16px;
+  outline:none;
+  transition:box-shadow 0.3s ease;
 }
+input:focus { box-shadow:0 0 8px #00eaff; }
 
-input:focus {
-  box-shadow: 0 0 8px #00eaff;
-}
-
-/* Button */
+/* Buttons */
 button {
-  padding: 12px 25px;
-  border-radius: 8px;
-  border: none;
-  background: #00eaff;
-  color: #111;
-  font-size: 16px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: transform 0.2s ease, background 0.2s ease;
+  padding:12px 20px;
+  border-radius:8px;
+  border:none;
+  background:#00eaff;
+  color:#111;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
+  transition:transform 0.2s ease, background 0.2s ease;
+  margin: 5px;
 }
-
-button:hover {
-  background: #00b8c7;
-  transform: scale(1.05);
-}
+button:hover { background:#00b8c7; transform: scale(1.05); }
 
 /* QR Box */
 .qr-box {
-  margin-top: 25px;
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 220px;
+  margin-top:25px;
+  background:#111;
+  padding:20px;
+  border-radius:12px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:220px;
 }
-
-/* QR Image */
 .qr-box img {
-  width: 200px;
-  height: 200px;
-  opacity: 0;
-  transform: scale(0);
+  width:200px;
+  height:200px;
+  opacity:0;
+  transform:scale(0);
   transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
 }
-
-/* Animation rehefa mamokatra QR */
-.qr-box img.show {
-  opacity: 1;
-  transform: scale(1);
-}
+.qr-box img.show { opacity:1; transform:scale(1); }
 
 /* Responsive */
-@media screen and (max-width: 400px) {
-  .container {
-    width: 90%;
-    padding: 20px;
-  }
-
-  button, input {
-    width: 100%;
-  }
-
-  .qr-box img {
-    width: 150px;
-    height: 150px;
-  }
+@media screen and (max-width:400px){
+  .container { width:90%; padding:20px; }
+  button, input { width:100%; }
+  .qr-box img { width:150px; height:150px; }
 }
