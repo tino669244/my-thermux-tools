@@ -38,7 +38,7 @@ function generateQR() {
 
     setTimeout(() => {
         qr.classList.add("show");
-    }, 100);
+    }, 120);
 }
 
 function downloadQR() {
