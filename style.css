@@ -1,4 +1,4 @@
-/* Reset */
+/* Reset kely */
 * {
   margin: 0;
   padding: 0;
@@ -24,18 +24,21 @@ body {
   width: 350px;
 }
 
+/* Title */
 h1 {
   font-size: 28px;
   margin-bottom: 10px;
   color: #00eaff;
 }
 
+/* Subtitle */
 p {
   font-size: 14px;
   margin-bottom: 20px;
   color: #ccc;
 }
 
+/* Input */
 input {
   width: 90%;
   padding: 12px 10px;
@@ -43,8 +46,15 @@ input {
   border: none;
   margin-bottom: 15px;
   font-size: 16px;
+  outline: none;
+  transition: box-shadow 0.3s ease;
 }
 
+input:focus {
+  box-shadow: 0 0 8px #00eaff;
+}
+
+/* Button */
 button {
   padding: 12px 25px;
   border-radius: 8px;
@@ -54,7 +64,7 @@ button {
   font-size: 16px;
   font-weight: bold;
   cursor: pointer;
-  transition: 0.3s;
+  transition: transform 0.2s ease, background 0.2s ease;
 }
 
 button:hover {
@@ -62,14 +72,46 @@ button:hover {
   transform: scale(1.05);
 }
 
+/* QR Box */
 .qr-box {
   margin-top: 25px;
   background: #111;
   padding: 20px;
   border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 220px;
 }
 
+/* QR Image */
 .qr-box img {
   width: 200px;
   height: 200px;
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.5s ease-in-out, transform 0.5s ease-out;
+}
+
+/* Animation rehefa mamokatra QR */
+.qr-box img.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Responsive */
+@media screen and (max-width: 400px) {
+  .container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  button, input {
+    width: 100%;
+  }
+
+  .qr-box img {
+    width: 150px;
+    height: 150px;
+  }
 }
