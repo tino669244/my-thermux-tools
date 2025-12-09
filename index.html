@@ -1,29 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>QR Code Generator</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QR Code Generator</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
+
 <body>
+    <h1 id="brand">Tino Andaina</h1>
 
-  <!-- Fixed name eo ambony, terminal style -->
-  <div class="fixed-name">Tino Andraina</div>
+    <div class="container">
+        <h2>Smart QR Code Generator</h2>
 
-  <div class="container">
-    <h1>QR Code Generator</h1>
-    <p>Soraty ny URL tianao (Facebook, Instagram, TikTok, sns)</p>
+        <div class="social-menu">
+            <button onclick="setPreset('facebook')">Facebook</button>
+            <button onclick="setPreset('instagram')">Instagram</button>
+            <button onclick="setPreset('tiktok')">TikTok</button>
+            <button onclick="setPreset('youtube')">YouTube</button>
+            <button onclick="setPreset('whatsapp')">WhatsApp</button>
+        </div>
 
-    <input type="text" id="textInput" placeholder="https://facebook.com/...">
-    
-    <button onclick="generateQR()">Generate QR Code</button>
-    <button onclick="downloadQR()">Download QR</button>
+        <input type="text" id="textInput" placeholder="Ampidiro URL na misafidiana réseau ↑">
 
-    <div class="qr-box">
-      <img id="qrImage" src="" alt="QR Code hiseho eto">
+        <button id="generateBtn" onclick="generateQR()">Generate QR Code</button>
+        <button id="downloadBtn" onclick="downloadQR()">Download QR</button>
+
+        <img id="qrImage" class="qr" />
     </div>
-  </div>
 
-  <script src="script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
