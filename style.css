@@ -6,19 +6,30 @@ body {
   color: white;
 }
 
-/* BRAND TOP LEFT */
-#brand {
+/* BRAND */
+#brandWrap {
   position: fixed;
   top: 10px;
   left: 15px;
-  font-size: 22px;
-  color: #00ff66;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+#brandLogo {
+  height: 50px;
+}
+
+#brandText {
   font-family: "Courier New", monospace;
+  color: #00ff66;
+  font-weight: 700;
+  font-size: 20px;
   letter-spacing: 2px;
   text-shadow: 0 0 5px #00ff6699;
 }
 
-/* MAIN CONTAINER */
+/* MAIN BOX */
 .container {
   margin: 80px auto 0;
   width: 90%;
@@ -98,7 +109,7 @@ button:hover {
   transform: scale(1);
 }
 
-/* RIGHT SIDE ADVICE BOX */
+/* RIGHT ADVICE BOX */
 .advice-box {
   position: fixed;
   top: 90px;
@@ -121,7 +132,7 @@ button:hover {
   margin-bottom: 8px;
 }
 
-/* AVATAR LIST */
+/* AVATARS */
 .avatar-list {
   margin-top: 12px;
   display: flex;
