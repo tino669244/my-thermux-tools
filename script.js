@@ -60,3 +60,25 @@ function downloadQR() {
     document.querySelector(".christmas-banner")?.remove();
     document.querySelector(".snow")?.remove();
 }
+
+/* ❄️ SNOW FALLING EFFECT */
+const snowContainer = document.querySelector(".snow-container");
+
+function createSnowflake() {
+  const snowflake = document.createElement("div");
+  snowflake.className = "snowflake";
+  snowflake.innerHTML = "❄";
+
+  snowflake.style.left = Math.random() * window.innerWidth + "px";
+  snowflake.style.animationDuration = (5 + Math.random() * 5) + "s";
+  snowflake.style.fontSize = (8 + Math.random() * 12) + "px";
+  snowflake.style.opacity = Math.random();
+
+  snowContainer.appendChild(snowflake);
+
+  setTimeout(() => {
+    snowflake.remove();
+  }, 10000);
+}
+
+setInterval(createSnowflake, 200);
