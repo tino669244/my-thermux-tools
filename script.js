@@ -54,3 +54,9 @@ function downloadQR() {
     link.download = "QRCode.png";
     link.click();
 }
+
+    const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
+    if (month !== 11) {
+    document.querySelector(".christmas-banner")?.remove();
+    document.querySelector(".snow")?.remove();
+}
