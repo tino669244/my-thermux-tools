@@ -177,32 +177,33 @@ button:hover {
   to { box-shadow: 0 0 25px #fff; }
 }
 
-/* ❄️ Snow effect */
-.snow::before,
-.snow::after {
-  content: "";
+/* ❄️ REAL FALLING SNOW */
+.snow-container {
+  pointer-events: none;
   position: fixed;
-  top: -100%;
+  top: 0;
   left: 0;
   width: 100%;
-  height: 200%;
-  background-image:
-    radial-gradient(2px 2px at 20px 30px, white, transparent),
-    radial-gradient(2px 2px at 100px 80px, white, transparent),
-    radial-gradient(1.5px 1.5px at 200px 150px, white, transparent),
-    radial-gradient(2px 2px at 300px 200px, white, transparent),
-    radial-gradient(1.5px 1.5px at 400px 50px, white, transparent);
-  animation: snowFall 18s linear infinite;
-  opacity: 0.6;
-  z-index: 1;
+  height: 100%;
+  overflow: hidden;
+  z-index: 2;
 }
 
-.snow::after {
-  animation-duration: 25s;
-  opacity: 0.4;
+.snowflake {
+  position: absolute;
+  top: -10px;
+  color: white;
+  font-size: 10px;
+  opacity: 0.8;
+  animation-name: fall;
+  animation-timing-function: linear;
 }
 
-@keyframes snowFall {
-  from { transform: translateY(0); }
-  to { transform: translateY(100vh); }
+@keyframes fall {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(100vh);
+  }
 }
