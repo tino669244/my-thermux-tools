@@ -82,33 +82,4 @@ function createSnowflake() {
 }
 
 setInterval(createSnowflake, 200);
-/* 🕒 CLOCK FIX (SAFE VERSION) */
-function startClock() {
-  function updateClock() {
-    const now = new Date();
-
-    const h = String(now.getHours()).padStart(2, "0");
-    const m = String(now.getMinutes()).padStart(2, "0");
-    const s = String(now.getSeconds()).padStart(2, "0");
-
-    const timeEl = document.getElementById("time");
-    const dateEl = document.getElementById("date");
-
-    if (timeEl && dateEl) {
-      timeEl.textContent = `${h}:${m}:${s}`;
-
-      dateEl.textContent = now.toLocaleDateString("fr-FR", {
-        weekday: "short",
-        day: "numeric",
-        month: "short",
-        year: "numeric"
-      });
-    }
-  }
-
-  updateClock();
-  setInterval(updateClock, 1000);
-}
-
-document.addEventListener("DOMContentLoaded", startClock);
 
