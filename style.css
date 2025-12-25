@@ -207,25 +207,4 @@ button:hover {
     transform: translateY(100vh);
   }
 
-/* 🕒 MINI CLOCK UNDER LOGO */
-.mini-clock {
-  margin-top: 4px;
-  padding: 6px 10px;
-  border-radius: 12px;
-  background: #0b0b0b;
-  border: 1px solid #00ff66;
-  box-shadow: 0 0 10px #00ff6644;
-  width: fit-content;
-}
 
-#time {
-  font-family: "Courier New", monospace;
-  font-size: 14px;
-  color: #00ff66;
-  text-align: left;
-}
-
-#date {
-  font-size: 11px;
-  color: #aaa;
-}
