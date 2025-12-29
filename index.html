@@ -1,83 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tino Andraina – QR Generator</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Tino Andraina – QR Global</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-    <!-- HAPPY NEW YEAR 2026 -->
-<div class="happy new year 2026">
-  🎄 Natao ho anao namako ity mba hanamora kokoa ny fifandraisanao amin'ny hafa n'aiza n'aiza 🎁
-</div>
+  <!-- 🔰 BRAND -->
+  <div id="brandWrap">
+    <img id="brandLogo" src="logo.svg" alt="Logo" />
+    <div>
+      <div id="brandText">Tino Andraina</div>
 
-<!-- ❄️ SNOW CONTAINER -->
-<div class="snow-container"></div>
+      <div class="new-year">
+        🎆 Bonne année <span>2026</span> 🎆
+      </div>
 
-    <!-- BRAND HEADER -->
-    <div id="brandWrap">
-        <img id="brandLogo" src="logo.svg" alt="Logo">
-        <div id="brandText">Tino Andraina</div>
+      <div class="motivation">
+        Un simple QR peut connecter le monde entier 🌍<br>
+        Partage • Connexion • Liberté numérique
+      </div>
     </div>
-    
-    <div class="container">
-        <h2>Smart QR Code Generator</h2>
+  </div>
 
-        <div class="social-menu">
+  <!-- 📦 MAIN -->
+  <div class="container">
+    <h2>QR Code Generator</h2>
 
-            <button onclick="setPreset('facebook')">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/facebook.svg" class="icon"> Facebook
-            </button>
-
-            <button onclick="setPreset('instagram')">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/instagram.svg" class="icon"> Instagram
-            </button>
-
-            <button onclick="setPreset('tiktok')">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/tiktok.svg" class="icon"> TikTok
-            </button>
-
-            <button onclick="setPreset('youtube')">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/youtube.svg" class="icon"> YouTube
-            </button>
-
-            <button onclick="setPreset('whatsapp')">
-                <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/whatsapp.svg" class="icon"> WhatsApp
-            </button>
-
-        </div>
-
-        <input type="text" id="textInput" placeholder="Ampidiro URL na misafidiana réseau ↑">
-
-        <button onclick="generateQR()">Generate QR</button>
-        <button onclick="downloadQR()">Download QR</button>
-
-        <img id="qrImage" class="qr">
+    <div class="social-menu">
+      <button onclick="preset('facebook')">Facebook</button>
+      <button onclick="preset('instagram')">Instagram</button>
+      <button onclick="preset('tiktok')">TikTok</button>
+      <button onclick="preset('youtube')">YouTube</button>
+      <button onclick="preset('whatsapp')">WhatsApp</button>
     </div>
 
+    <input id="inputText" type="text" placeholder="Ampidiro URL na misafidiana réseau" />
 
-    <!-- RIGHT SIDE BAR -->
-    <div class="advice-box">
-        <h3>🛈 Conseil</h3>
-        <p>
-            Scan-o ny QR dia hidiranao mivantana ny pejy tianao.<br>
-            Ataovy azo antoka fa marina ny URL alohan'ny hanaovana Generate.
-            Mafinaritra no mifampizara ny zava-tsoa sy mahafinaritra ho an'ny tsirairay
-        </p>
+    <button onclick="generateQR()">Generate QR</button>
+    <button onclick="downloadQR()">Download QR</button>
 
-        <div class="avatar-list">
-            <img src="https://i.pravatar.cc/100?img=1">
-            <img src="https://i.pravatar.cc/100?img=2">
-            <img src="https://i.pravatar.cc/100?img=3">
-            <img src="https://i.pravatar.cc/100?img=4">
-            <img src="https://i.pravatar.cc/100?img=5">
-            <img src="https://i.pravatar.cc/100?img=6">
-        </div>
+    <img id="qrImage" />
+  </div>
+
+  <!-- 🌍 WORLD USERS -->
+  <div class="world-users">
+    <p>🌍 Utilisateurs connectés dans le monde</p>
+    <div class="avatars">
+      <img src="https://i.pravatar.cc/100?img=10">
+      <img src="https://i.pravatar.cc/100?img=20">
+      <img src="https://i.pravatar.cc/100?img=30">
+      <img src="https://i.pravatar.cc/100?img=40">
+      <img src="https://i.pravatar.cc/100?img=50">
+      <img src="https://i.pravatar.cc/100?img=60">
+      <img src="https://i.pravatar.cc/100?img=70">
+      <img src="https://i.pravatar.cc/100?img=80">
     </div>
+  </div>
 
-    <script src="script.js"></script>
+  <!-- ❄️ SNOW -->
+  <div class="snow-container"></div>
+
+  <script src="script.js"></script>
 </body>
 </html>
