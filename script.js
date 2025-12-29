@@ -1,53 +1,29 @@
-function preset(type) {
-  const input = document.getElementById("inputText");
-  const links = {
-    facebook: "https://www.facebook.com/",
-    instagram: "https://www.instagram.com/",
-    tiktok: "https://www.tiktok.com/@",
-    youtube: "https://www.youtube.com/",
-    whatsapp: "https://wa.me/"
-  };
-  input.value = links[type];
-}
-
 function generateQR() {
-  const text = document.getElementById("inputText").value.trim();
-  const img = document.getElementById("qrImage");
-
-  if (!text) {
-    alert("Ampidiro URL aloha");
+  const input = document.getElementById("inputText").value.trim();
+  if (!input) {
+    alert("Ampidiro lien aloha");
     return;
   }
 
-  img.src =
+  const url =
     "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
-    encodeURIComponent(text);
+    encodeURIComponent(input);
 
-  img.style.display = "block";
+  const preview = document.getElementById("qrPreview");
+  const center = document.getElementById("qrCenter");
+
+  preview.src = url;
+  center.src = url;
+
+  preview.style.display = "block";
 }
 
 function downloadQR() {
-  const img = document.getElementById("qrImage");
+  const img = document.getElementById("qrPreview");
   if (!img.src) return;
 
   const a = document.createElement("a");
   a.href = img.src;
-  a.download = "QRCode.png";
+  a.download = "QR_Tino_Andraina.png";
   a.click();
 }
-
-/* ❄️ SNOW EFFECT */
-const snowContainer = document.querySelector(".snow-container");
-
-setInterval(() => {
-  const snow = document.createElement("div");
-  snow.className = "snowflake";
-  snow.innerHTML = "❄";
-  snow.style.left = Math.random() * window.innerWidth + "px";
-  snow.style.fontSize = 8 + Math.random() * 12 + "px";
-  snow.style.animationDuration = 5 + Math.random() * 5 + "s";
-
-  snowContainer.appendChild(snow);
-
-  setTimeout(() => snow.remove(), 10000);
-}, 200);
