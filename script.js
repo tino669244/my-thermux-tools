@@ -1,85 +1,53 @@
-function setPreset(type) {
-    const input = document.getElementById("textInput");
-
-    switch(type) {
-        case "facebook":
-            input.value = "https://www.facebook.com/";
-            break;
-        case "instagram":
-            input.value = "https://www.instagram.com/";
-            break;
-        case "tiktok":
-            input.value = "https://www.tiktok.com/@";
-            break;
-        case "youtube":
-            input.value = "https://www.youtube.com/";
-            break;
-        case "whatsapp":
-            input.value = "https://wa.me/";
-            break;
-    }
+function preset(type) {
+  const input = document.getElementById("inputText");
+  const links = {
+    facebook: "https://www.facebook.com/",
+    instagram: "https://www.instagram.com/",
+    tiktok: "https://www.tiktok.com/@",
+    youtube: "https://www.youtube.com/",
+    whatsapp: "https://wa.me/"
+  };
+  input.value = links[type];
 }
 
 function generateQR() {
-    const url = document.getElementById("textInput").value.trim();
-    const qr = document.getElementById("qrImage");
+  const text = document.getElementById("inputText").value.trim();
+  const img = document.getElementById("qrImage");
 
-    if (!url) {
-        alert("Ampidiro aloha ny URL!");
-        return;
-    }
+  if (!text) {
+    alert("Ampidiro URL aloha");
+    return;
+  }
 
-    const qrURL =
-      "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
-      encodeURIComponent(url);
+  img.src =
+    "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
+    encodeURIComponent(text);
 
-    qr.classList.remove("show");
-    qr.src = qrURL;
-
-    setTimeout(() => {
-        qr.classList.add("show");
-    }, 120);
+  img.style.display = "block";
 }
 
 function downloadQR() {
-    const qr = document.getElementById("qrImage");
+  const img = document.getElementById("qrImage");
+  if (!img.src) return;
 
-    if (!qr.src) {
-        alert("Tsy misy QR mbola novokarina!");
-        return;
-    }
-
-    const link = document.createElement("a");
-    link.href = qr.src;
-    link.download = "QRCode.png";
-    link.click();
+  const a = document.createElement("a");
+  a.href = img.src;
+  a.download = "QRCode.png";
+  a.click();
 }
 
-    const month = new Date().getMonth(); // 0 = Jan, 11 = Dec
-    if (month !== 11) {
-    document.querySelector(".christmas-banner")?.remove();
-    document.querySelector(".snow")?.remove();
-}
-
-/* ❄️ SNOW FALLING EFFECT */
+/* ❄️ SNOW EFFECT */
 const snowContainer = document.querySelector(".snow-container");
 
-function createSnowflake() {
-  const snowflake = document.createElement("div");
-  snowflake.className = "snowflake";
-  snowflake.innerHTML = "❄";
+setInterval(() => {
+  const snow = document.createElement("div");
+  snow.className = "snowflake";
+  snow.innerHTML = "❄";
+  snow.style.left = Math.random() * window.innerWidth + "px";
+  snow.style.fontSize = 8 + Math.random() * 12 + "px";
+  snow.style.animationDuration = 5 + Math.random() * 5 + "s";
 
-  snowflake.style.left = Math.random() * window.innerWidth + "px";
-  snowflake.style.animationDuration = (5 + Math.random() * 5) + "s";
-  snowflake.style.fontSize = (8 + Math.random() * 12) + "px";
-  snowflake.style.opacity = Math.random();
+  snowContainer.appendChild(snow);
 
-  snowContainer.appendChild(snowflake);
-
-  setTimeout(() => {
-    snowflake.remove();
-  }, 10000);
-}
-
-setInterval(createSnowflake, 200);
-
+  setTimeout(() => snow.remove(), 10000);
+}, 200);
