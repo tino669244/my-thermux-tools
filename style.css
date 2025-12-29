@@ -1,171 +1,178 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  background: #0b0b0b;
+  background: #0c0f14;
   font-family: Arial, sans-serif;
-  color: white;
+  color: #fff;
 }
 
-/* 🔰 BRAND */
-#brandWrap {
-  position: fixed;
-  top: 10px;
-  left: 15px;
+/* HEADER */
+.brand {
   display: flex;
-  gap: 10px;
-  z-index: 10;
+  align-items: center;
+  gap: 14px;
+  padding: 16px;
+  background: #10141c;
 }
 
-#brandLogo {
+.brand img {
   height: 50px;
 }
 
-#brandText {
+.brand-text h1 {
+  margin: 0;
+  color: #00ff66;
   font-family: "Courier New", monospace;
-  color: #00ff66;
-  font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  text-shadow: 0 0 6px #00ff66aa;
 }
 
-/* 🎆 NEW YEAR */
-.new-year {
-  font-size: 14px;
+.year {
+  margin: 2px 0;
   color: #ffd700;
-  margin-top: 4px;
-  animation: pulse 2s infinite;
 }
 
-.new-year span {
-  color: #00ff66;
-  font-size: 16px;
+.tagline {
+  font-size: 13px;
+  color: #bbb;
 }
 
-@keyframes pulse {
-  0% { opacity: 0.6; }
-  50% { opacity: 1; }
-  100% { opacity: 0.6; }
+/* MAIN */
+main {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
 }
 
-/* 💡 MOTIVATION */
-.motivation {
-  font-size: 12px;
-  color: #aaa;
-  max-width: 220px;
-  line-height: 1.4;
-}
-
-/* 📦 MAIN */
-.container {
-  margin: 140px auto 0;
-  width: 90%;
-  max-width: 420px;
-  background: #151515;
-  padding: 22px;
+/* QR BOX */
+.qr-box {
+  background: #151a24;
+  padding: 20px;
   border-radius: 14px;
-  box-shadow: 0 0 16px #00ff6644;
-  text-align: center;
+  margin-bottom: 30px;
 }
 
-.container h2 {
+.qr-box h2 {
   margin-top: 0;
 }
 
-.social-menu {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px;
-}
-
-.social-menu button {
-  background: #222;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  border-radius: 7px;
-  cursor: pointer;
-}
-
-.social-menu button:hover {
-  background: #00ff66;
-  color: #000;
-}
-
-input {
+.qr-box input {
   width: 100%;
   padding: 12px;
-  margin-top: 14px;
-  border-radius: 7px;
+  border-radius: 8px;
   border: none;
-  outline: none;
-}
-
-button {
-  width: 100%;
   margin-top: 10px;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.actions button {
+  flex: 1;
   padding: 12px;
   background: #00ff66;
   border: none;
-  border-radius: 7px;
+  border-radius: 8px;
+  cursor: pointer;
   font-weight: bold;
-  cursor: pointer;
 }
 
-button:hover {
-  background: #00cc55;
-}
-
-#qrImage {
-  margin-top: 18px;
-  width: 200px;
+#qrPreview {
   display: none;
+  margin: 20px auto 0;
+  width: 180px;
 }
 
-/* 🌍 WORLD USERS */
-.world-users {
-  margin-top: 30px;
-  text-align: center;
-  font-size: 13px;
-  color: #aaa;
+/* MAP */
+.map-box {
+  background: #151a24;
+  padding: 20px;
+  border-radius: 14px;
 }
 
-.avatars {
-  margin-top: 10px;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 8px;
+.map-wrapper {
+  position: relative;
+  margin-top: 15px;
 }
 
-.avatars img {
-  width: 36px;
-  height: 36px;
-  border-radius: 50%;
-  border: 2px solid #00ff66;
-  animation: float 3s ease-in-out infinite;
+.world-map {
+  width: 100%;
+  border-radius: 12px;
 }
 
-@keyframes float {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-}
-
-/* ❄️ SNOW */
-.snow-container {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-}
-
-.snowflake {
+/* MADAGASCAR POINT */
+.mg-point {
   position: absolute;
-  top: -10px;
-  color: white;
-  animation: fall linear forwards;
+  top: 63%;
+  left: 63%;
+  width: 14px;
+  height: 14px;
+  background: #00ff66;
+  border-radius: 50%;
+  box-shadow: 0 0 15px #00ff66;
+  animation: pulse 1.8s infinite;
 }
 
-@keyframes fall {
-  to { transform: translateY(100vh); }
+@keyframes pulse {
+  0% { box-shadow: 0 0 5px #00ff66; }
+  50% { box-shadow: 0 0 18px #00ff66; }
+  100% { box-shadow: 0 0 5px #00ff66; }
+}
+
+/* QR CENTER */
+.qr-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #0c0f14;
+  padding: 14px;
+  border-radius: 16px;
+  box-shadow: 0 0 25px #00ff66aa;
+}
+
+.qr-center img {
+  width: 150px;
+}
+
+/* LINES */
+.line {
+  position: absolute;
+  width: 2px;
+  height: 120px;
+  background: linear-gradient(#00ff66, transparent);
+  animation: send 2s infinite;
+}
+
+.l1 { top: 55%; left: 70%; transform: rotate(-35deg); }
+.l2 { top: 58%; left: 75%; transform: rotate(5deg); }
+.l3 { top: 60%; left: 72%; transform: rotate(35deg); }
+
+@keyframes send {
+  0% { opacity: 0; height: 0; }
+  50% { opacity: 1; }
+  100% { opacity: 0; height: 120px; }
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  font-size: 12px;
+  color: #777;
+  padding: 20px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .actions {
+    flex-direction: column;
+  }
+
+  .qr-center img {
+    width: 120px;
+  }
 }
