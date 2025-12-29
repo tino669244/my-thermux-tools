@@ -1,69 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <title>Tino Andraina – QR Global</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <title>Tino Andraina • QR Global</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-  <!-- 🔰 BRAND -->
-  <div id="brandWrap">
-    <img id="brandLogo" src="logo.svg" alt="Logo" />
-    <div>
-      <div id="brandText">Tino Andraina</div>
-
-      <div class="new-year">
-        🎆 Bonne année <span>2026</span> 🎆
-      </div>
-
-      <div class="motivation">
-        Un simple QR peut connecter le monde entier 🌍<br>
-        Partage • Connexion • Liberté numérique
-      </div>
-    </div>
+<header class="brand">
+  <img src="logo.svg" alt="Logo">
+  <div class="brand-text">
+    <h1>Tino Andraina</h1>
+    <p class="year">🎆 Bonne année 2026</p>
+    <p class="tagline">Partager un QR depuis Madagascar vers le monde 🌍</p>
   </div>
+</header>
 
-  <!-- 📦 MAIN -->
-  <div class="container">
+<main>
+
+  <!-- QR GENERATOR -->
+  <section class="qr-box">
     <h2>QR Code Generator</h2>
 
-    <div class="social-menu">
-      <button onclick="preset('facebook')">Facebook</button>
-      <button onclick="preset('instagram')">Instagram</button>
-      <button onclick="preset('tiktok')">TikTok</button>
-      <button onclick="preset('youtube')">YouTube</button>
-      <button onclick="preset('whatsapp')">WhatsApp</button>
+    <input id="inputText" type="text" placeholder="Ampidiro lien Facebook, site, sns...">
+
+    <div class="actions">
+      <button onclick="generateQR()">Generate</button>
+      <button onclick="downloadQR()">Download</button>
     </div>
 
-    <input id="inputText" type="text" placeholder="Ampidiro URL na misafidiana réseau" />
+    <img id="qrPreview" alt="QR Preview">
+  </section>
 
-    <button onclick="generateQR()">Generate QR</button>
-    <button onclick="downloadQR()">Download QR</button>
+  <!-- MAP GLOBAL -->
+  <section class="map-box">
+    <h2>Connexion mondiale depuis Madagascar 🇲🇬</h2>
 
-    <img id="qrImage" />
-  </div>
+    <div class="map-wrapper">
+      <img src="map.jpg" class="world-map">
 
-  <!-- 🌍 WORLD USERS -->
-  <div class="world-users">
-    <p>🌍 Utilisateurs connectés dans le monde</p>
-    <div class="avatars">
-      <img src="https://i.pravatar.cc/100?img=10">
-      <img src="https://i.pravatar.cc/100?img=20">
-      <img src="https://i.pravatar.cc/100?img=30">
-      <img src="https://i.pravatar.cc/100?img=40">
-      <img src="https://i.pravatar.cc/100?img=50">
-      <img src="https://i.pravatar.cc/100?img=60">
-      <img src="https://i.pravatar.cc/100?img=70">
-      <img src="https://i.pravatar.cc/100?img=80">
+      <!-- MADAGASCAR -->
+      <div class="mg-point" title="Madagascar"></div>
+
+      <!-- QR CENTER -->
+      <div class="qr-center">
+        <img id="qrCenter">
+      </div>
+
+      <!-- LIGNES -->
+      <span class="line l1"></span>
+      <span class="line l2"></span>
+      <span class="line l3"></span>
     </div>
-  </div>
+  </section>
 
-  <!-- ❄️ SNOW -->
-  <div class="snow-container"></div>
+</main>
 
-  <script src="script.js"></script>
+<footer>
+  © 2026 • Tino Andraina • QR Global Project
+</footer>
+
+<script src="script.js"></script>
 </body>
 </html>
