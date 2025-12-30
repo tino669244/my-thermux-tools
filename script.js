@@ -1,25 +1,21 @@
 function generateQR() {
-  const input = document.getElementById("inputText").value.trim();
-  if (!input) {
+  const text = document.getElementById("textInput").value;
+  const img = document.getElementById("qrImage");
+
+  if (!text) {
     alert("Ampidiro lien aloha");
     return;
   }
 
-  const url =
+  img.src =
     "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=" +
-    encodeURIComponent(input);
+    encodeURIComponent(text);
 
-  const preview = document.getElementById("qrPreview");
-  const center = document.getElementById("qrCenter");
-
-  preview.src = url;
-  center.src = url;
-
-  preview.style.display = "block";
+  img.style.display = "block";
 }
 
 function downloadQR() {
-  const img = document.getElementById("qrPreview");
+  const img = document.getElementById("qrImage");
   if (!img.src) return;
 
   const a = document.createElement("a");
