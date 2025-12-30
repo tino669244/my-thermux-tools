@@ -1,68 +1,76 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Tino Andraina | QR Global</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Tino Andraina | QR Global Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <header>
-  <h1>Tino Andraina</h1>
-  <p class="year">Bonne année 2026</p>
-  <p class="subtitle">QR partagé depuis Madagascar vers le monde 🌍</p>
+  <div class="logo">Tino Andraina</div>
+  <div class="subtitle">
+    Bonne année 2026<br>
+    QR partagé depuis Madagascar vers le monde 🌍
+  </div>
 </header>
 
 <main>
 
+<!-- LEFT -->
 <section class="card">
   <h2>QR Code Generator</h2>
-  <input id="textInput" placeholder="Lien Facebook, Instagram, site...">
-  <button onclick="generateQR()">Generate</button>
+  <input id="textInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram…">
+  <button onclick="generateQR()">Generate QR</button>
   <button onclick="downloadQR()">Download</button>
   <img id="qrImage">
+
+  <!-- SOCIAL BUTTONS -->
+  <div class="socials">
+    <button onclick="quick('https://tiktok.com')">TikTok</button>
+    <button onclick="quick('https://youtube.com')">YouTube</button>
+    <button onclick="quick('https://facebook.com')">Facebook</button>
+    <button onclick="quick('https://instagram.com')">Instagram</button>
+  </div>
+
+  <!-- AVATARS -->
+  <div class="avatars">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
 </section>
 
-<section class="card">
-  <h2>Global Network Map</h2>
+<!-- RIGHT -->
+<section class="card map-card">
+  <h2>Global Geographic Network</h2>
 
-  <!-- MAP SVG STYLE B -->
-  <svg viewBox="0 0 1000 450" class="map">
+  <div id="mapContainer">
+    <object id="worldMap" data="world-map.svg" type="image/svg+xml"></object>
 
-    <!-- Grid -->
-    <defs>
-      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0f3" stroke-width="0.3"/>
-      </pattern>
-    </defs>
-    <rect width="1000" height="450" fill="#020b0f"/>
-    <rect width="1000" height="450" fill="url(#grid)"/>
-
-    <!-- Continents minimal -->
-    <path class="land" d="M120,120 L260,100 L310,160 L250,240 L150,260 L100,180 Z"/>
-    <path class="land" d="M360,120 L560,110 L620,170 L580,260 L420,280 L350,200 Z"/>
-    <path class="land" d="M650,140 L870,130 L930,210 L860,300 L700,320 L640,230 Z"/>
-
-    <!-- Madagascar -->
-    <circle cx="620" cy="310" r="7" class="mg"/>
+    <!-- Madagascar node -->
+    <div id="mg-node"></div>
 
     <!-- Rays -->
-    <line class="ray" x1="620" y1="310" x2="450" y2="210"/>
-    <line class="ray" x1="620" y1="310" x2="750" y2="200"/>
-    <line class="ray" x1="620" y1="310" x2="850" y2="270"/>
-    <line class="ray" x1="620" y1="310" x2="300" y2="220"/>
-    <line class="ray" x1="620" y1="310" x2="200" y2="180"/>
+    <svg class="rays" viewBox="0 0 1000 500">
+      <line class="ray" x1="620" y1="300" x2="450" y2="200"/>
+      <line class="ray" x1="620" y1="300" x2="780" y2="220"/>
+      <line class="ray" x1="620" y1="300" x2="300" y2="250"/>
+      <line class="ray" x1="620" y1="300" x2="850" y2="320"/>
+      <line class="ray" x1="620" y1="300" x2="520" y2="150"/>
+      <line class="ray" x1="620" y1="300" x2="700" y2="380"/>
+    </svg>
+  </div>
 
-  </svg>
-
-  <p class="map-text">SOURCE : MADAGASCAR 🇲🇬 — GLOBAL SHARING ACTIVE</p>
+  <p class="map-text">
+    SOURCE : MADAGASCAR 🇲🇬 — GLOBAL CONNECTION ACTIVE
+  </p>
 </section>
 
 </main>
 
 <footer>
-© 2026 • Tino Andraina • QR Global Project
+© 2026 • Tino Andraina • QR Global Network
 </footer>
 
 <script src="script.js"></script>
