@@ -1,178 +1,127 @@
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 
 body {
   margin: 0;
-  background: #0c0f14;
-  font-family: Arial, sans-serif;
-  color: #fff;
-}
-
-/* HEADER */
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-  padding: 16px;
-  background: #10141c;
-}
-
-.brand img {
-  height: 50px;
-}
-
-.brand-text h1 {
-  margin: 0;
+  background: #020b0f;
   color: #00ff66;
   font-family: "Courier New", monospace;
 }
 
-.year {
-  margin: 2px 0;
-  color: #ffd700;
+/* HEADER */
+header {
+  padding: 20px;
+  border-bottom: 1px solid #00ff6633;
 }
 
-.tagline {
+header h1 {
+  margin: 0;
+  font-size: 24px;
+}
+
+.year {
+  color: #00ffaa;
+  font-size: 14px;
+}
+
+.subtitle {
   font-size: 13px;
-  color: #bbb;
+  color: #88ffcc;
 }
 
 /* MAIN */
 main {
-  max-width: 1100px;
-  margin: auto;
   padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
 }
 
-/* QR BOX */
-.qr-box {
-  background: #151a24;
-  padding: 20px;
-  border-radius: 14px;
-  margin-bottom: 30px;
+/* CARD */
+.card {
+  background: #05151a;
+  border: 1px solid #00ff6633;
+  padding: 16px;
+  border-radius: 6px;
+  box-shadow: 0 0 15px #00ff6622;
 }
 
-.qr-box h2 {
+.card h2 {
   margin-top: 0;
+  font-size: 16px;
 }
 
-.qr-box input {
+/* INPUT & BUTTON */
+input {
   width: 100%;
-  padding: 12px;
-  border-radius: 8px;
-  border: none;
-  margin-top: 10px;
+  padding: 10px;
+  background: black;
+  color: #00ff66;
+  border: 1px solid #00ff6633;
+  margin-bottom: 10px;
 }
 
-.actions {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.actions button {
-  flex: 1;
-  padding: 12px;
+button {
+  width: 100%;
+  padding: 10px;
   background: #00ff66;
   border: none;
-  border-radius: 8px;
-  cursor: pointer;
   font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 6px;
 }
 
-#qrPreview {
+button:hover {
+  background: #00cc55;
+}
+
+#qrImage {
   display: none;
-  margin: 20px auto 0;
   width: 180px;
+  margin: 10px auto 0;
 }
 
 /* MAP */
-.map-box {
-  background: #151a24;
-  padding: 20px;
-  border-radius: 14px;
-}
-
-.map-wrapper {
-  position: relative;
-  margin-top: 15px;
-}
-
-.world-map {
+.svg-map {
   width: 100%;
-  border-radius: 12px;
+  border: 1px solid #00ff6633;
 }
 
-/* MADAGASCAR POINT */
-.mg-point {
-  position: absolute;
-  top: 63%;
-  left: 63%;
-  width: 14px;
-  height: 14px;
-  background: #00ff66;
-  border-radius: 50%;
-  box-shadow: 0 0 15px #00ff66;
-  animation: pulse 1.8s infinite;
+.land {
+  fill: #0f3d2e;
+}
+
+.mg {
+  fill: #00ff66;
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-  0% { box-shadow: 0 0 5px #00ff66; }
-  50% { box-shadow: 0 0 18px #00ff66; }
-  100% { box-shadow: 0 0 5px #00ff66; }
+  0% { r: 6; opacity: 0.6; }
+  50% { r: 10; opacity: 1; }
+  100% { r: 6; opacity: 0.6; }
 }
 
-/* QR CENTER */
-.qr-center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #0c0f14;
-  padding: 14px;
-  border-radius: 16px;
-  box-shadow: 0 0 25px #00ff66aa;
+.ray {
+  stroke: #00ff66;
+  stroke-width: 2;
+  stroke-dasharray: 8;
+  animation: dash 2s linear infinite;
 }
 
-.qr-center img {
-  width: 150px;
+@keyframes dash {
+  to { stroke-dashoffset: -30; }
 }
 
-/* LINES */
-.line {
-  position: absolute;
-  width: 2px;
-  height: 120px;
-  background: linear-gradient(#00ff66, transparent);
-  animation: send 2s infinite;
-}
-
-.l1 { top: 55%; left: 70%; transform: rotate(-35deg); }
-.l2 { top: 58%; left: 75%; transform: rotate(5deg); }
-.l3 { top: 60%; left: 72%; transform: rotate(35deg); }
-
-@keyframes send {
-  0% { opacity: 0; height: 0; }
-  50% { opacity: 1; }
-  100% { opacity: 0; height: 120px; }
+.map-text {
+  font-size: 12px;
+  margin-top: 8px;
+  color: #77ffbb;
 }
 
 /* FOOTER */
 footer {
   text-align: center;
+  padding: 12px;
   font-size: 12px;
-  color: #777;
-  padding: 20px;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-  .actions {
-    flex-direction: column;
-  }
-
-  .qr-center img {
-    width: 120px;
-  }
+  color: #00ff6688;
 }
