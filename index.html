@@ -2,63 +2,64 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Tino Andraina • QR Global</title>
+  <title>Tino Andraina | QR Global Hack</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="brand">
-  <img src="logo.svg" alt="Logo">
-  <div class="brand-text">
-    <h1>Tino Andraina</h1>
-    <p class="year">🎆 Bonne année 2026</p>
-    <p class="tagline">Partager un QR depuis Madagascar vers le monde 🌍</p>
-  </div>
+<header>
+  <h1>&gt; Tino_Andraina</h1>
+  <p class="year">[ Bonne Année 2026 ]</p>
+  <p class="subtitle">QR partagé depuis Madagascar vers le monde</p>
 </header>
 
 <main>
 
   <!-- QR GENERATOR -->
-  <section class="qr-box">
-    <h2>QR Code Generator</h2>
-
-    <input id="inputText" type="text" placeholder="Ampidiro lien Facebook, site, sns...">
-
-    <div class="actions">
-      <button onclick="generateQR()">Generate</button>
-      <button onclick="downloadQR()">Download</button>
-    </div>
-
-    <img id="qrPreview" alt="QR Preview">
+  <section class="card">
+    <h2>&gt; QR_CODE_GENERATOR</h2>
+    <input id="textInput" type="text" placeholder="https://facebook.com/...">
+    <button onclick="generateQR()">GENERATE</button>
+    <button onclick="downloadQR()">DOWNLOAD</button>
+    <img id="qrImage">
   </section>
 
-  <!-- MAP GLOBAL -->
-  <section class="map-box">
-    <h2>Connexion mondiale depuis Madagascar 🇲🇬</h2>
+  <!-- MAP -->
+  <section class="card">
+    <h2>&gt; GLOBAL_NETWORK_MAP</h2>
 
-    <div class="map-wrapper">
-      <img src="map.jpg" class="world-map">
+    <div class="svg-map">
+      <svg viewBox="0 0 1000 450">
 
-      <!-- MADAGASCAR -->
-      <div class="mg-point" title="Madagascar"></div>
+        <!-- BACKGROUND GRID -->
+        <rect width="1000" height="450" fill="#071a1f"/>
 
-      <!-- QR CENTER -->
-      <div class="qr-center">
-        <img id="qrCenter">
-      </div>
+        <!-- CONTINENTS (stylised) -->
+        <path class="land" d="M90,120 L220,90 L300,150 L260,240 L150,260 L80,180 Z"/>
+        <path class="land" d="M340,130 L520,110 L600,170 L560,260 L400,280 L330,200 Z"/>
+        <path class="land" d="M620,150 L830,130 L910,200 L850,300 L670,320 L600,230 Z"/>
 
-      <!-- LIGNES -->
-      <span class="line l1"></span>
-      <span class="line l2"></span>
-      <span class="line l3"></span>
+        <!-- MADAGASCAR -->
+        <circle cx="650" cy="310" r="8" class="mg"/>
+
+        <!-- RAYS -->
+        <line class="ray" x1="650" y1="310" x2="450" y2="200"/>
+        <line class="ray" x1="650" y1="310" x2="750" y2="180"/>
+        <line class="ray" x1="650" y1="310" x2="850" y2="260"/>
+        <line class="ray" x1="650" y1="310" x2="300" y2="220"/>
+        <line class="ray" x1="650" y1="310" x2="200" y2="180"/>
+
+      </svg>
     </div>
+
+    <p class="map-text">[ SOURCE : MADAGASCAR 🇲🇬 | GLOBAL DISTRIBUTION ACTIVE ]</p>
   </section>
 
 </main>
 
 <footer>
-  © 2026 • Tino Andraina • QR Global Project
+  &copy; 2026 | Tino Andraina | QR Global Hack Project
 </footer>
 
 <script src="script.js"></script>
