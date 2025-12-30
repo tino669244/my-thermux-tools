@@ -2,64 +2,67 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>Tino Andraina | QR Global Hack</title>
+  <title>Tino Andraina | QR Global</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <header>
-  <h1>&gt; Tino_Andraina</h1>
-  <p class="year">[ Bonne Année 2026 ]</p>
-  <p class="subtitle">QR partagé depuis Madagascar vers le monde</p>
+  <h1>Tino Andraina</h1>
+  <p class="year">Bonne année 2026</p>
+  <p class="subtitle">QR partagé depuis Madagascar vers le monde 🌍</p>
 </header>
 
 <main>
 
-  <!-- QR GENERATOR -->
-  <section class="card">
-    <h2>&gt; QR_CODE_GENERATOR</h2>
-    <input id="textInput" type="text" placeholder="https://facebook.com/...">
-    <button onclick="generateQR()">GENERATE</button>
-    <button onclick="downloadQR()">DOWNLOAD</button>
-    <img id="qrImage">
-  </section>
+<section class="card">
+  <h2>QR Code Generator</h2>
+  <input id="textInput" placeholder="Lien Facebook, Instagram, site...">
+  <button onclick="generateQR()">Generate</button>
+  <button onclick="downloadQR()">Download</button>
+  <img id="qrImage">
+</section>
 
-  <!-- MAP -->
-  <section class="card">
-    <h2>&gt; GLOBAL_NETWORK_MAP</h2>
+<section class="card">
+  <h2>Global Network Map</h2>
 
-    <div class="svg-map">
-      <svg viewBox="0 0 1000 450">
+  <!-- MAP SVG STYLE B -->
+  <svg viewBox="0 0 1000 450" class="map">
 
-        <!-- BACKGROUND GRID -->
-        <rect width="1000" height="450" fill="#071a1f"/>
+    <!-- Grid -->
+    <defs>
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0f3" stroke-width="0.3"/>
+      </pattern>
+    </defs>
+    <rect width="1000" height="450" fill="#020b0f"/>
+    <rect width="1000" height="450" fill="url(#grid)"/>
 
-        <!-- CONTINENTS (stylised) -->
-        <path class="land" d="M90,120 L220,90 L300,150 L260,240 L150,260 L80,180 Z"/>
-        <path class="land" d="M340,130 L520,110 L600,170 L560,260 L400,280 L330,200 Z"/>
-        <path class="land" d="M620,150 L830,130 L910,200 L850,300 L670,320 L600,230 Z"/>
+    <!-- Continents minimal -->
+    <path class="land" d="M120,120 L260,100 L310,160 L250,240 L150,260 L100,180 Z"/>
+    <path class="land" d="M360,120 L560,110 L620,170 L580,260 L420,280 L350,200 Z"/>
+    <path class="land" d="M650,140 L870,130 L930,210 L860,300 L700,320 L640,230 Z"/>
 
-        <!-- MADAGASCAR -->
-        <circle cx="650" cy="310" r="8" class="mg"/>
+    <!-- Madagascar -->
+    <circle cx="620" cy="310" r="7" class="mg"/>
 
-        <!-- RAYS -->
-        <line class="ray" x1="650" y1="310" x2="450" y2="200"/>
-        <line class="ray" x1="650" y1="310" x2="750" y2="180"/>
-        <line class="ray" x1="650" y1="310" x2="850" y2="260"/>
-        <line class="ray" x1="650" y1="310" x2="300" y2="220"/>
-        <line class="ray" x1="650" y1="310" x2="200" y2="180"/>
+    <!-- Rays -->
+    <line class="ray" x1="620" y1="310" x2="450" y2="210"/>
+    <line class="ray" x1="620" y1="310" x2="750" y2="200"/>
+    <line class="ray" x1="620" y1="310" x2="850" y2="270"/>
+    <line class="ray" x1="620" y1="310" x2="300" y2="220"/>
+    <line class="ray" x1="620" y1="310" x2="200" y2="180"/>
 
-      </svg>
-    </div>
+  </svg>
 
-    <p class="map-text">[ SOURCE : MADAGASCAR 🇲🇬 | GLOBAL DISTRIBUTION ACTIVE ]</p>
-  </section>
+  <p class="map-text">SOURCE : MADAGASCAR 🇲🇬 — GLOBAL SHARING ACTIVE</p>
+</section>
 
 </main>
 
 <footer>
-  &copy; 2026 | Tino Andraina | QR Global Hack Project
+© 2026 • Tino Andraina • QR Global Project
 </footer>
 
 <script src="script.js"></script>
