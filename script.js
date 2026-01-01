@@ -95,9 +95,3 @@ onwheel=e=>{
   globe.rotation.y+=0.002;
   renderer.render(scene,camera);
 })();
-
-/* Avatars motion */
-document.querySelectorAll(".avatars span").forEach((a,i)=>{
-  a.style.left=50+Math.cos(i)*40+"%";
-  a.style.top=50+Math.sin(i)*40+"%";
-});
