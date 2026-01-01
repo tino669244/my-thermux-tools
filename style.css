@@ -75,29 +75,6 @@ button:hover{background:#00cc55}
   height:100%;
 }
 
-/* Avatars */
-.avatars{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-.avatars span{
-  position:absolute;
-  width:14px;
-  height:14px;
-  border-radius:50%;
-  background:#00ff66;
-  opacity:.7;
-}
-.avatar {
-  width: 28px;
-  height: 28px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid #00ff66;
-  box-shadow: 0 0 6px #00ff66;
-}
-
 .source{
   font-size:12px;
   opacity:.6;
