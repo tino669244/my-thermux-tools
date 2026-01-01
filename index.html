@@ -2,81 +2,76 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Tino Andraina | QR Global Network</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tino Andriana • QR Global Network</title>
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
 <header>
-  <div class="logo">Tino Andraina</div>
-  <div class="subtitle">
-    Bonne année 2026<br>
-    QR partagé depuis Madagascar vers le monde 🌍
-  </div>
+  <h1>Tino Andriana</h1>
+  <p class="subtitle">Bonne année 2026</p>
+  <p class="desc">QR partagé depuis Madagascar vers le monde 🌍</p>
 </header>
 
-<main>
+<main class="container">
 
 <!-- LEFT -->
-<section class="card">
+<section class="panel">
   <h2>QR Code Generator</h2>
-  <input id="textInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram…">
+
+  <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram...">
+
   <button onclick="generateQR()">Generate QR</button>
   <button onclick="downloadQR()">Download</button>
-  <img id="qrImage">
 
-  <!-- SOCIAL BUTTONS -->
+  <div id="qrBox"></div>
+
   <div class="socials">
-    <button onclick="quick('https://tiktok.com')">TikTok</button>
-    <button onclick="quick('https://youtube.com')">YouTube</button>
-    <button onclick="quick('https://facebook.com')">Facebook</button>
-    <button onclick="quick('https://instagram.com')">Instagram</button>
+    <button>TikTok</button>
+    <button>YouTube</button>
+    <button>Facebook</button>
+    <button>Instagram</button>
   </div>
 
-  <!-- AVATARS -->
- <div class="avatars">
-  <img src="https://i.pravatar.cc/40?img=1">
-  <img src="https://i.pravatar.cc/40?img=2">
-  <img src="https://i.pravatar.cc/40?img=3">
-  <img src="https://i.pravatar.cc/40?img=4">
-  <img src="https://i.pravatar.cc/40?img=5">
-  <img src="https://i.pravatar.cc/40?img=6">
-  <img src="https://i.pravatar.cc/40?img=7">
-</div>
+  <div class="avatars">
+    <span></span><span></span><span></span><span></span><span></span>
+  </div>
 </section>
 
 <!-- RIGHT -->
-<section class="card map-card">
+<section class="panel">
   <h2>Global Geographic Network</h2>
 
-  <div id="mapContainer">
-    <object data="world-map.svg" type="image/svg+xml"></object>
+  <!-- INLINE SVG MAP -->
+  <svg viewBox="0 0 1000 500" class="world-map">
 
-    <!-- Madagascar node -->
-    <div id="mg-node"></div>
+    <!-- Continents -->
+    <path d="M80 120 L200 90 L260 160 L230 260 L120 240 Z"/>
+    <path d="M320 100 L480 90 L520 160 L480 240 L340 230 Z"/>
+    <path d="M580 120 L740 110 L800 180 L760 260 L600 240 Z"/>
+    <path d="M300 280 L380 300 L360 380 L280 360 Z"/>
+
+    <!-- Madagascar -->
+    <circle cx="560" cy="300" r="7" class="origin"/>
 
     <!-- Rays -->
-    <svg class="rays" viewBox="0 0 1000 500">
-      <line class="ray" x1="620" y1="300" x2="450" y2="200"/>
-      <line class="ray" x1="620" y1="300" x2="780" y2="220"/>
-      <line class="ray" x1="620" y1="300" x2="300" y2="250"/>
-      <line class="ray" x1="620" y1="300" x2="850" y2="320"/>
-      <line class="ray" x1="620" y1="300" x2="520" y2="150"/>
-      <line class="ray" x1="620" y1="300" x2="700" y2="380"/>
-    </svg>
-  </div>
+    <line x1="560" y1="300" x2="160" y2="170" class="ray"/>
+    <line x1="560" y1="300" x2="400" y2="140" class="ray"/>
+    <line x1="560" y1="300" x2="700" y2="160" class="ray"/>
+    <line x1="560" y1="300" x2="850" y2="230" class="ray"/>
+    <line x1="560" y1="300" x2="320" y2="260" class="ray"/>
+    <line x1="560" y1="300" x2="500" y2="420" class="ray"/>
 
-  <p class="map-text">
-    SOURCE : MADAGASCAR 🇲🇬 — GLOBAL CONNECTION ACTIVE
-  </p>
+  </svg>
+
+  <p class="source">SOURCE : MADAGASCAR MG — GLOBAL CONNECTION ACTIVE</p>
 </section>
 
 </main>
 
 <footer>
-© 2026 • Tino Andraina • QR Global Network
+© 2026 • Tino Andriana • QR Global Network
 </footer>
 
 <script src="script.js"></script>
