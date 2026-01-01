@@ -1,47 +1,57 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>QR Global – Tino Andraina</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Tino Andraina • Global QR Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-  <!-- MATRIX NAME -->
-  <canvas id="matrixName"></canvas>
+<canvas id="matrix"></canvas>
 
-  <!-- MAIN CONTAINER -->
-  <div class="container">
+<header>
+  <h1>Tino Andraina</h1>
+  <p>Bonne année 2026</p>
+  <p class="desc">QR partagé depuis Madagascar vers le monde 🌍</p>
+</header>
 
-    <!-- LEFT -->
-    <div class="left">
-      <h2>Scan & Connect</h2>
-      <p>Scanne le QR code pour accéder directement à mes réseaux.</p>
+<main class="container">
 
-      <div class="buttons">
-        <a href="https://facebook.com" target="_blank">Facebook</a>
-        <a href="https://instagram.com" target="_blank">Instagram</a>
-        <a href="https://tiktok.com" target="_blank">TikTok</a>
-        <a href="https://youtube.com" target="_blank">YouTube</a>
-      </div>
-    </div>
+<section class="panel">
+  <h2>QR Code</h2>
+  <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram">
+  <button onclick="generateQR()">Generate</button>
+  <button onclick="downloadQR()">Download</button>
+  <div id="qrBox"></div>
 
-    <!-- CENTER -->
-    <div class="center">
-      <div id="qrBox">
-        <canvas id="qrCanvas"></canvas>
-      </div>
-    </div>
-
-    <!-- RIGHT -->
-    <div class="right">
-      <h3>Bonne année 2026 🎉</h3>
-      <p>Reste motivé, connecté et créatif.<br>
-      Le futur est numérique.</p>
-    </div>
-
+  <div class="socials">
+    <button onclick="quick('https://tiktok.com')">TikTok</button>
+    <button onclick="quick('https://youtube.com')">YouTube</button>
+    <button onclick="quick('https://facebook.com')">Facebook</button>
+    <button onclick="quick('https://instagram.com')">Instagram</button>
   </div>
+</section>
 
-  <script src="script.js"></script>
+<section class="panel globe-panel">
+  <h2>Global 3D Network</h2>
+  <div id="globeWrap">
+    <div id="globe"></div>
+
+    <!-- Avatars -->
+    <div class="avatars">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <p class="source">SOURCE : MADAGASCAR 🇲🇬 — GLOBAL CONNECTION ACTIVE</p>
+</section>
+
+</main>
+
+<footer>© 2026 • Tino Andraina</footer>
+
+<script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
