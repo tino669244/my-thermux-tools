@@ -1,89 +1,78 @@
-*{box-sizing:border-box}
-
-body{
-  margin:0;
-  background:black;
-  color:#00ff66;
-  font-family:monospace;
-  overflow:hidden;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
 }
 
-/* MATRIX */
-#matrix{
-  position:fixed;
-  inset:0;
-  z-index:0;
+body {
+  background: radial-gradient(circle at top, #001a0f, #000);
+  color: #00ff66;
+  overflow: hidden;
 }
 
-header{
-  position:relative;
-  z-index:2;
-  padding:20px;
-  border-bottom:1px solid #00ff6633;
+/* MATRIX HEADER */
+#matrixName {
+  width: 100%;
+  height: 90px;
+  display: block;
 }
 
-.desc{opacity:.7}
-
-.container{
-  position:relative;
-  z-index:2;
-  display:flex;
-  gap:20px;
-  padding:20px;
+/* LAYOUT */
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 40px;
 }
 
-.panel{
-  flex:1;
-  background:rgba(0,255,100,.05);
-  border:1px solid #00ff6633;
-  padding:15px;
-  border-radius:8px;
+/* LEFT */
+.left {
+  width: 30%;
 }
 
-input,button{
-  width:100%;
-  padding:8px;
-  margin:6px 0;
-  background:black;
-  border:1px solid #00ff66;
-  color:#00ff66;
+.left h2 {
+  margin-bottom: 10px;
 }
 
-button{
-  background:#00ff66;
-  color:black;
-  cursor:pointer;
-}
-button:hover{background:#00cc55}
-
-#qrBox img{margin-top:10px}
-
-.socials{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
+.buttons a {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  text-decoration: none;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+  text-align: center;
+  transition: 0.3s;
 }
 
-/* GLOBE */
-#globeWrap{
-  position:relative;
-  height:320px;
+.buttons a:hover {
+  background: #00ff66;
+  color: #000;
 }
 
-#globe{
-  width:100%;
-  height:100%;
+/* CENTER */
+.center {
+  width: 30%;
+  display: flex;
+  justify-content: center;
 }
 
-.source{
-  font-size:12px;
-  opacity:.6;
+#qrBox {
+  width: 200px;
+  height: 200px;
+  border: 2px solid #00ff66;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-footer{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  opacity:.5;
-  padding:10px;
+/* RIGHT */
+.right {
+  width: 30%;
+  text-align: right;
+}
+
+.right h3 {
+  margin-bottom: 10px;
 }
