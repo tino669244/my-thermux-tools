@@ -2,41 +2,55 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Tino Andriana • Global QR Network</title>
+<title>Tino Andraina • Global QR Network</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<header>
-  <h1>Tino Andriana</h1>
-  <p>Bonne année 2026</p>
-  <p>QR partagé depuis Madagascar vers le monde 🌍</p>
-</header>
-
 <canvas id="matrix"></canvas>
+
+<header>
+  <h1>Tino Andraina</h1>
+  <p>Bonne année 2026</p>
+  <p class="desc">QR partagé depuis Madagascar vers le monde 🌍</p>
+</header>
 
 <main class="container">
 
 <section class="panel">
-  <h2>QR Code Generator</h2>
-  <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook...">
-  <button onclick="generateQR()">Generate QR</button>
+  <h2>QR Code</h2>
+  <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram">
+  <button onclick="generateQR()">Generate</button>
   <button onclick="downloadQR()">Download</button>
   <div id="qrBox"></div>
+
+  <div class="socials">
+    <button onclick="quick('https://tiktok.com')">TikTok</button>
+    <button onclick="quick('https://youtube.com')">YouTube</button>
+    <button onclick="quick('https://facebook.com')">Facebook</button>
+    <button onclick="quick('https://instagram.com')">Instagram</button>
+  </div>
 </section>
 
 <section class="panel globe-panel">
   <h2>Global 3D Network</h2>
-  <div id="globe"></div>
-  <p class="source">SOURCE : MADAGASCAR MG — GLOBAL CONNECTION ACTIVE</p>
+  <div id="globeWrap">
+    <div id="globe"></div>
+
+    <!-- Avatars -->
+    <div class="avatars">
+      <span></span><span></span><span></span><span></span><span></span><span></span>
+    </div>
+  </div>
+  <p class="source">SOURCE : MADAGASCAR 🇲🇬 — GLOBAL CONNECTION ACTIVE</p>
 </section>
 
 </main>
 
-<footer>© 2026 • Tino Andriana</footer>
+<footer>© 2026 • Tino Andraina</footer>
 
-<!-- THREE.JS -->
 <script src="https://unpkg.com/three@0.155.0/build/three.min.js"></script>
 <script src="script.js"></script>
 </body>
