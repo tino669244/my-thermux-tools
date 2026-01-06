@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: Arial, sans-serif;
+  font-family: monospace;
 }
 
 body {
@@ -20,90 +20,76 @@ body {
 
 /* HEADER */
 header {
-  position: relative;
   text-align: center;
-  padding: 90px 20px 60px;
+  padding: 70px 20px 20px;
+  position: relative;
 }
 
-/* 2026 PERMANENT */
 .year-2026 {
   position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 60px;
-  font-weight: bold;
-  color: #0f0;
+  top: 10px;
+  right: 25px;
+  font-size: 50px;
   opacity: 0.25;
   animation: flicker 2s infinite;
 }
 
 @keyframes flicker {
-  0% { opacity: 0.2; }
-  50% { opacity: 0.5; }
-  100% { opacity: 0.2; }
+  0%,100% { opacity: 0.2; }
+  50%     { opacity: 0.5; }
 }
 
-/* GLITCH */
+/* glitch */
 .glitch {
-  font-size: 3em;
+  font-size: 2.5em;
   position: relative;
 }
-
 .glitch::before,
 .glitch::after {
   content: attr(data-text);
   position: absolute;
   left: 0;
-  width: 100%;
+}
+.glitch::before { color: red; animation: g1 1.5s infinite; }
+.glitch::after  { color: cyan; animation: g2 2s infinite; }
+
+@keyframes g1 { 
+  0% { transform: translate(-2px,-2px); }
+  100% { transform: translate(2px,2px); }
+}
+@keyframes g2 { 
+  0% { transform: translate(2px,-2px); }
+  100% { transform: translate(-2px,2px); }
 }
 
-.glitch::before {
-  color: red;
-  animation: glitch1 1.5s infinite;
-}
-
-.glitch::after {
-  color: cyan;
-  animation: glitch2 2s infinite;
-}
-
-@keyframes glitch1 {
-  0% { transform: translate(-2px, -2px); }
-  100% { transform: translate(2px, 2px); }
-}
-
-@keyframes glitch2 {
-  0% { transform: translate(2px, -2px); }
-  100% { transform: translate(-2px, 2px); }
-}
-
-.desc {
-  margin-top: 10px;
-  opacity: 0.8;
-}
-
-/* FIREWORKS */
 #fireworks {
   position: absolute;
   inset: 0;
+  height: 220px;
+  margin: auto;
   z-index: -2;
 }
 
-/* BUTTONS */
+/* GLOBE */
+#globe {
+  display: block;
+  margin: 15px auto 0;
+  filter: drop-shadow(0 0 8px #0f0);
+}
+
+/* buttons */
 .top-buttons {
   text-align: center;
   margin: 20px 0;
 }
-
 .top-buttons button {
   background: transparent;
   border: 1px solid #0f0;
-  color: #0f0;
-  padding: 10px 20px;
+  padding: 8px 16px;
   margin: 5px;
+  color: #0f0;
   cursor: pointer;
 }
-
 .top-buttons button:hover {
   background: #0f0;
   color: #000;
@@ -113,99 +99,57 @@ header {
 .panel {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.95);
+  background: rgba(0,0,0,0.97);
   display: none;
   padding: 40px 20px;
   overflow-y: auto;
+  text-align: center;
 }
-
 .close {
   position: absolute;
   top: 20px;
-  right: 30px;
+  right: 35px;
   cursor: pointer;
+  font-size: 25px;
 }
-
-.panel svg {
-  display: block;
+.panel img {
+  width: 220px;
   margin: 20px auto;
-  animation: pulse 3s infinite;
+  filter: drop-shadow(0 0 8px #0f0);
 }
 
-@keyframes pulse {
-  0% { opacity: 0.5; }
-  50% { opacity: 1; }
-  100% { opacity: 0.5; }
-}
-
-.panel p {
-  max-width: 650px;
-  margin: 15px auto;
-  line-height: 1.7;
-}
-
-/* MAIN */
+/* main */
 main {
   display: flex;
   justify-content: center;
-  gap: 30px;
   flex-wrap: wrap;
-  padding: 40px 20px;
+  gap: 25px;
+  padding: 30px 10px;
 }
-
 .box {
   border: 1px solid #0f0;
   padding: 20px;
-  width: 300px;
+  width: 280px;
   text-align: center;
 }
-
 input {
   width: 100%;
   padding: 8px;
   margin: 10px 0;
 }
 
-button {
-  padding: 8px 15px;
-  margin: 5px;
-  cursor: pointer;
+/* ultra hacker */
+body.ultra {
+  background: #001a0f;
+  color: #00ff88;
 }
-
-#qrBox img {
-  margin-top: 15px;
+body.ultra .box,
+body.ultra button {
+  box-shadow: 0 0 20px #00ff88;
 }
-
-.socials button {
-  width: 100%;
-  margin: 5px 0;
+body.ultra #matrix {
+  filter: brightness(1.4);
 }
-
-/* GLOBE */
-#globe {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 260px;
-  height: 260px;
-  transform: translate(-50%, -50%);
-  z-index: -1;
-  filter: drop-shadow(0 0 25px #00ff88);
-  cursor: grab;
+body.ultra #globe {
+  filter: drop-shadow(0 0 40px #00ff88);
 }
-
-@media (max-width: 600px) {
-  #globe {
-    width: 200px;
-    height: 200px;
-  }
-}
-
-/* FIREWORK 2026 */
-.year-2026 {
-  text-shadow:
-    0 0 10px #00ff88,
-    0 0 20px #00ff88,
-    0 0 40px #00ff88;
-}
-
