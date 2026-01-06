@@ -1,9 +1,8 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Segoe UI", Arial, sans-serif;
+  font-family: Arial, sans-serif;
 }
 
 body {
@@ -12,27 +11,42 @@ body {
   overflow-x: hidden;
 }
 
-/* MATRIX CANVAS */
+/* MATRIX */
 #matrix {
   position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -2;
+  inset: 0;
+  z-index: -3;
 }
 
 /* HEADER */
 header {
-  text-align: center;
-  padding: 80px 20px;
   position: relative;
+  text-align: center;
+  padding: 90px 20px 60px;
 }
 
-/* GLITCH EFFECT */
+/* 2026 PERMANENT */
+.year-2026 {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 60px;
+  font-weight: bold;
+  color: #0f0;
+  opacity: 0.25;
+  animation: flicker 2s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { opacity: 0.2; }
+}
+
+/* GLITCH */
 .glitch {
   font-size: 3em;
-  font-weight: bold;
   position: relative;
-  color: #0f0;
 }
 
 .glitch::before,
@@ -41,27 +55,26 @@ header {
   position: absolute;
   left: 0;
   width: 100%;
-  opacity: 0.7;
 }
 
 .glitch::before {
-  animation: glitchTop 1.5s infinite linear alternate-reverse;
-  color: #f00;
+  color: red;
+  animation: glitch1 1.5s infinite;
 }
 
 .glitch::after {
-  animation: glitchBottom 2s infinite linear alternate-reverse;
-  color: #0ff;
+  color: cyan;
+  animation: glitch2 2s infinite;
 }
 
-@keyframes glitchTop {
-  0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, -2px); }
-  100% { clip-path: inset(0 0 20% 0); transform: translate(2px, 2px); }
+@keyframes glitch1 {
+  0% { transform: translate(-2px, -2px); }
+  100% { transform: translate(2px, 2px); }
 }
 
-@keyframes glitchBottom {
-  0% { clip-path: inset(80% 0 0 0); transform: translate(2px, -2px); }
-  100% { clip-path: inset(20% 0 0 0); transform: translate(-2px, 2px); }
+@keyframes glitch2 {
+  0% { transform: translate(2px, -2px); }
+  100% { transform: translate(-2px, 2px); }
 }
 
 .desc {
@@ -73,13 +86,13 @@ header {
 #fireworks {
   position: absolute;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
 }
 
-/* TOP BUTTONS */
+/* BUTTONS */
 .top-buttons {
   text-align: center;
-  margin-bottom: 20px;
+  margin: 20px 0;
 }
 
 .top-buttons button {
@@ -100,14 +113,10 @@ header {
 .panel {
   position: fixed;
   inset: 0;
-  background: rgba(0,0,0,0.9);
+  background: rgba(0,0,0,0.95);
   display: none;
-  padding: 40px;
-  text-align: center;
-}
-
-.panel h2 {
-  margin-bottom: 15px;
+  padding: 40px 20px;
+  overflow-y: auto;
 }
 
 .close {
@@ -115,7 +124,24 @@ header {
   top: 20px;
   right: 30px;
   cursor: pointer;
-  font-size: 22px;
+}
+
+.panel svg {
+  display: block;
+  margin: 20px auto;
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.5; }
+  50% { opacity: 1; }
+  100% { opacity: 0.5; }
+}
+
+.panel p {
+  max-width: 650px;
+  margin: 15px auto;
+  line-height: 1.7;
 }
 
 /* MAIN */
@@ -146,14 +172,11 @@ button {
   cursor: pointer;
 }
 
-/* QR */
 #qrBox img {
   margin-top: 15px;
 }
 
-/* SOCIALS */
 .socials button {
   width: 100%;
   margin: 5px 0;
 }
-
