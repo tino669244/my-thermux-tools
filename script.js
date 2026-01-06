@@ -1,68 +1,47 @@
-/* =========================
-   AUDIO
-========================= */
+/* AUDIO */
 const beep = document.getElementById("beep");
 
+/* BACKGROUND MUSIC */
 const bgMusic = document.createElement("audio");
-bgMusic.src =
-  "https://assets.mixkit.co/music/preview/mixkit-digital-technology-ambient-114.mp3";
+bgMusic.src = "https://assets.mixkit.co/music/preview/mixkit-digital-technology-ambient-114.mp3";
 bgMusic.loop = true;
 bgMusic.volume = 0.3;
 document.body.appendChild(bgMusic);
-
 document.addEventListener("click", () => {
   if (bgMusic.paused) bgMusic.play();
 });
 
-/* =========================
-   PANEL
-========================= */
+/* ========================= PANEL ========================= */
 function openPanel(type) {
   beep.play();
-  const panel = document.getElementById("panel");
+  const p = document.getElementById("panel");
+  p.style.display = "block";
+
   const title = document.getElementById("panelTitle");
   const text = document.getElementById("panelText");
-  panel.style.display = "block";
 
   if (type === "reseau") {
-    title.innerText = "Réseaux sociaux";
+    title.innerText = "Réseau mondiale";
+
     text.innerHTML = `
-      ${svgReseau()}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Globe_icon_green.svg/512px-Globe_icon_green.svg.png">
       <p>
-      Ny tambajotra sosialy dia sehatra an-tserasera ahafahan’ny olona mamorona kaonty manokana,
-      mifandray amin’ny hafa, mizara votoaty toy ny lahatsoratra, sary ary horonan-tsary,
-      ary manorina fiarahamonina mifototra amin’ny tombontsoa iombonana,
-      na fifandraisana manokana sy ara-piasana.
+      Ny tambajotra sosialy dia sehatra ahafahan’ny olona mifandray,
+      mizara votoaty, mamorona fiarahamonina ary mifanakalo vaovao eran-tany.
       </p>
       <p>
-      Ireo tambajotra ireo dia ampiasaina amin’ny fifandraisana andavanandro,
-      fampahalalam-baovao, fialamboly ary varotra nomerika.
-      Anisan’ireo malaza indrindra ny Facebook, Instagram, TikTok ary LinkedIn.
-      </p>
-      <p>
-      Miasa amin’ny alalan’ny algorithm ny tambajotra sosialy,
-      izay mandamina sy manolotra votoaty mifanaraka amin’ny zavatra mahaliana ny mpampiasa,
-      ary ahitana fiasa maro toy ny hafatra manokana, stories, commentaires, partages ary groupes.
-      </p>
-      <p>
-      Ho an’ny orinasa, fitaovana lehibe izy amin’ny marketing,
-      fifandraisana amin’ny mpanjifa, dokambarotra kendrena ary recrutement.
-      </p>
-      <p>
-      Misy ihany koa ny fanamby toy ny vaovao diso,
-      fanerena ara-tsosialy ary fitantanana ny laza an-tserasera.
+      Izy io no manokatra varavarana ho an'i Madagasikara hifandray amin'ny tontolo nomerika iraisam-pirenena.
       </p>
     `;
   }
 
   if (type === "pays") {
-    title.innerText = "Madagascar & Monde";
+    title.innerText = "Pays mondiale";
     text.innerHTML = `
-      ${svgMadagascar()}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9e/Flag-map_of_Madagascar.svg/512px-Flag-map_of_Madagascar.svg.png">
       <p>
-      Madagascar dia lasa ivon’ny fifandraisana nomerika maneran-tany.
-      Ny QR Code sy ny tambajotra sosialy dia mampifandray mivantana
-      ny firenena sy ny sehatra iraisam-pirenena.
+      Madagascar dia ivon’ny fifandraisana nomerika vaovao amin’ny alalan’ny QR,
+      rohy, tambajotra ary sehatra sosialy.
       </p>
     `;
   }
@@ -73,51 +52,31 @@ function closePanel() {
   document.getElementById("panel").style.display = "none";
 }
 
-/* =========================
-   SVG
-========================= */
-function svgReseau() {
-  return `
-  <svg viewBox="0 0 200 200" width="260">
-    <circle cx="100" cy="100" r="35" stroke="#00ff88" fill="none" stroke-width="2"/>
-    ${[20,40,180,50,160,170,40,160].map((v,i)=>`
-      <line x1="100" y1="100"
-            x2="${[20,180,160,40][Math.floor(i/2)]}"
-            y2="${[40,50,170,160][Math.floor(i/2)]}"
-            stroke="#00ff88"/>
-    `).join("")}
-  </svg>`;
-}
-
-function svgMadagascar() {
-  return `
-  <svg viewBox="0 0 100 200" width="120">
-    <path d="M50 10 C35 40 30 80 35 120 C40 160 60 185 55 195"
-      fill="none" stroke="#00ff88" stroke-width="3"/>
-  </svg>`;
-}
-
-/* =========================
-   QR
-========================= */
-let qrImg, qrGenerated = false;
+/* ========================= QR ========================= */
+let qrImg;
+let qrGenerated = false;
 
 function generateQR() {
   const value = document.getElementById("qrInput").value;
   if (!value) return alert("Ampidiro aloha ny URL");
+
   qrGenerated = true;
   beep.play();
+
   const box = document.getElementById("qrBox");
   box.innerHTML = "";
+
   qrImg = document.createElement("img");
   qrImg.src =
     "https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=" +
     encodeURIComponent(value);
+
   box.appendChild(qrImg);
 }
 
 function downloadQR() {
   if (!qrGenerated) return alert("Génère d'abord le QR");
+
   const a = document.createElement("a");
   a.href = qrImg.src;
   a.download = "qr-code.png";
@@ -129,111 +88,141 @@ function quick(url) {
   document.getElementById("qrInput").value = url;
 }
 
-/* =========================
-   MATRIX RAIN (TSY VOAKASIKA)
-========================= */
-const matrix = document.getElementById("matrix");
-const mctx = matrix.getContext("2d");
-matrix.width = innerWidth;
-matrix.height = innerHeight;
+/* ========================= MATRIX ========================= */
+const canvas = document.getElementById("matrix");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
 
-const letters = "TINOANDRAINA2026";
+const letters = "tinoandraina0248795126691100101";
 const fontSize = 14;
-const cols = matrix.width / fontSize;
-const drops = Array.from({ length: cols }).fill(1);
+const columns = canvas.width / fontSize;
+const drops = Array.from({ length: columns }).fill(1);
 
-setInterval(() => {
-  mctx.fillStyle = "rgba(0,0,0,0.05)";
-  mctx.fillRect(0,0,matrix.width,matrix.height);
-  mctx.fillStyle = "#00ff88";
-  mctx.font = fontSize + "px monospace";
-  drops.forEach((y,i)=>{
-    const t = letters[Math.random()*letters.length|0];
-    mctx.fillText(t, i*fontSize, y*fontSize);
-    if (y*fontSize > matrix.height && Math.random()>0.975) drops[i]=0;
+function drawMatrix() {
+  ctx.fillStyle = "rgba(0,0,0,0.05)";
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = "#0f0";
+  ctx.font = fontSize + "px monospace";
+
+  drops.forEach((y, i) => {
+    const text = letters[Math.floor(Math.random() * letters.length)];
+    ctx.fillText(text, i * fontSize, y * fontSize);
+    if (y * fontSize > canvas.height && Math.random() > 0.975) drops[i] = 0;
     drops[i]++;
   });
-},50);
+}
+setInterval(drawMatrix, 50);
 
-/* =========================
-   FIREWORK 2026 PERMANENT
-========================= */
+/* ========================= 2026 FIREWORK EXPLOSION ========================= */
 const fw = document.getElementById("fireworks");
 const fctx = fw.getContext("2d");
 fw.width = innerWidth;
-fw.height = 300;
+fw.height = 220;
 
-function fireworkText() {
+function draw2026() {
   fctx.clearRect(0,0,fw.width,fw.height);
-  for(let i=0;i<120;i++){
-    fctx.fillStyle = `rgba(0,255,150,${Math.random()})`;
-    fctx.beginPath();
-    fctx.arc(
-      fw.width/2 + Math.cos(i)*Math.random()*120,
-      140 + Math.sin(i)*Math.random()*60,
-      2,0,Math.PI*2
-    );
-    fctx.fill();
+  fctx.font = "bold 120px monospace";
+  fctx.fillStyle = "#00ff88";
+  fctx.textAlign = "center";
+  fctx.fillText("2026", fw.width/2, 160);
+
+  const img = fctx.getImageData(0,0,fw.width,fw.height);
+  fctx.clearRect(0,0,fw.width,fw.height);
+
+  for(let i=0;i<img.data.length;i+=4){
+    if(img.data[i]>0 && Math.random()>0.985){
+      const x = (i/4)%fw.width;
+      const y = Math.floor(i/4/fw.width);
+      fctx.fillStyle = "rgba(0,255,140," + Math.random() + ")";
+      fctx.beginPath();
+      fctx.arc(
+        x + Math.random()*6-3,
+        y + Math.random()*6-3,
+        2,0,Math.PI*2
+      );
+      fctx.fill();
+    }
   }
 }
-setInterval(fireworkText,300);
+setInterval(draw2026, 180);
 
-/* =========================
-   GLOBE 360° HACKER
-========================= */
+/* ========================= GLOBE 3D ========================= */
 const globe = document.getElementById("globe");
 const g = globe.getContext("2d");
-let rotX = 0, rotY = 0, vx = 0.002, vy = 0.001;
-let zoom = 1, dragging = false, lx=0, ly=0;
+globe.width = globe.height = 220;
 
-globe.width = globe.height = 260;
+let rotX = 0, rotY = 0;
+let vx = 0.002, vy = 0.001;
+let zoom = 1;
+let dragging = false, lx = 0, ly = 0;
 
-globe.onmousedown = e => {
-  dragging = true;
-  lx = e.clientX; ly = e.clientY;
-};
+const continents = [
+  [0,20],[10,30],[20,25],[-10,20],
+  [50,10],[55,20],[48,15],
+  [30,80],[40,100],[20,120],
+  [40,-80],[20,-90],[0,-70]
+];
 
-window.onmouseup = () => dragging = false;
+globe.onmousedown = e => { dragging = true; lx=e.clientX; ly=e.clientY; };
+window.onmouseup   = () => dragging = false;
 
 window.onmousemove = e => {
   if (!dragging) return;
-  vx = (e.clientY - ly) * 0.0005;
-  vy = (e.clientX - lx) * 0.0005;
-  lx = e.clientX; ly = e.clientY;
+  vx = (e.clientY - ly) * 0.0004;
+  vy = (e.clientX - lx) * 0.0004;
+  lx = e.clientX;
+  ly = e.clientY;
 };
 
-globe.onclick = () => zoom = zoom === 1 ? 1.4 : 1;
+globe.onclick = () => zoom = zoom===1 ? 1.5 : 1;
 
-function drawGlobe() {
-  g.clearRect(0,0,260,260);
+function project(lat,lon){
+  const r=80;
+  const x = r * Math.cos(lat) * Math.sin(lon + rotY);
+  const y = r * Math.sin(lat + rotX);
+  const z = Math.cos(lat) * Math.cos(lon + rotY);
+  return {x,y,z};
+}
+
+function drawGlobe(){
+  g.clearRect(0,0,220,220);
   g.save();
-  g.translate(130,130);
+  g.translate(110,110);
   g.scale(zoom,zoom);
 
   rotX += vx;
   rotY += vy;
 
-  // sphere
+  g.globalAlpha = 0.4;
   g.strokeStyle = "#00ff88";
-  for(let lat=-80; lat<=80; lat+=20){
+  for(let lat=-80;lat<=80;lat+=20){
     g.beginPath();
-    for(let lon=0; lon<=360; lon+=5){
-      const x = Math.cos(lat*Math.PI/180)*Math.cos(lon*Math.PI/180+rotY);
-      const y = Math.sin(lat*Math.PI/180+rotX);
-      g.lineTo(x*90,y*90);
+    for(let lon=-180;lon<=180;lon+=5){
+      const p = project(lat*Math.PI/180, lon*Math.PI/180);
+      g.lineTo(p.x,p.y);
     }
     g.stroke();
   }
 
-  // rays
-  for(let i=0;i<12;i++){
-    g.beginPath();
-    g.moveTo(0,0);
-    g.lineTo(Math.cos(i)*140,Math.sin(i)*140);
-    g.stroke();
-  }
+  g.globalAlpha = 1;
+  continents.forEach(c=>{
+    const p = project(c[0]*Math.PI/180, c[1]*Math.PI/180);
+    if (p.z>0){
+      g.fillStyle="#00ff88";
+      g.beginPath();
+      g.arc(p.x,p.y,2,0,Math.PI*2);
+      g.fill();
+    }
+  });
 
   g.restore();
   requestAnimationFrame(drawGlobe);
 }
 drawGlobe();
+
+/* ========================= ULTRA HACKER ========================= */
+function toggleHacker() {
+  beep.play();
+  document.body.classList.toggle("ultra");
+}
