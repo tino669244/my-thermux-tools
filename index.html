@@ -9,36 +9,32 @@
 
 <body>
 
-<!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
-<!-- HEADER -->
 <header>
   <div class="year-2026">2026</div>
 
   <h1 class="glitch" data-text="Tino Andraina">Tino Andraina</h1>
   <p class="desc">QR partagé depuis Madagascar vers le monde</p>
 
-  <!-- FIREWORKS -->
   <canvas id="fireworks"></canvas>
+
   <!-- GLOBE -->
-<canvas id="globe"></canvas>
+  <canvas id="globe"></canvas>
 </header>
 
-<!-- TOP BUTTONS -->
 <div class="top-buttons">
   <button onclick="openPanel('reseau')">Réseau mondiale</button>
   <button onclick="openPanel('pays')">Pays mondiale</button>
+  <button onclick="toggleHacker()">ULTRA‑HACKER</button>
 </div>
 
-<!-- PANEL -->
 <div id="panel" class="panel">
   <span class="close" onclick="closePanel()">✖</span>
   <h2 id="panelTitle"></h2>
   <div id="panelText"></div>
 </div>
 
-<!-- MAIN -->
 <main>
   <section class="box">
     <h2>QR Code</h2>
@@ -59,7 +55,6 @@
   </section>
 </main>
 
-<!-- SOUND -->
 <audio id="beep" preload="auto"
   src="https://assets.mixkit.co/sfx/preview/mixkit-tech-click-1140.mp3">
 </audio>
