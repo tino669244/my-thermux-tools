@@ -1,174 +1,73 @@
-*{box-sizing:border-box}
+*{
+  box-sizing:border-box;
+}
 
-body{
+html,body{
   margin:0;
+  padding:0;
   background:black;
   color:#00ff66;
   font-family:monospace;
-  overflow:hidden;
+  height:100%;
 }
 
-/* MATRIX */
+/* ===== MATRIX BACKGROUND ===== */
 #matrix{
   position:fixed;
   inset:0;
   z-index:0;
 }
 
+/* ===== HEADER ===== */
 header{
   position:relative;
   z-index:2;
-  padding:20px;
+  height:180px;
+  text-align:center;
   border-bottom:1px solid #00ff6633;
+  overflow:hidden;
 }
 
-.desc{opacity:.7}
+h1{
+  margin-top:10px;
+  font-size:30px;
+  text-shadow:0 0 10px #00ff66;
+}
 
-.container{
+.desc{
+  font-size:14px;
+  opacity:.8;
+}
+
+/* FIREWORKS LAYER */
+#fireworks{
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:0;
+  height:120px;
+  width:100%;
+  z-index:-1;
+}
+
+/* ===== CONTENT ===== */
+main{
   position:relative;
   z-index:2;
-  display:flex;
-  gap:20px;
   padding:20px;
+  display:flex;
+  gap:15px;
 }
 
-.panel{
-  flex:1;
-  background:rgba(0,255,100,.05);
-  border:1px solid #00ff6633;
-  padding:15px;
-  border-radius:8px;
-}
-
-input,button{
-  width:100%;
-  padding:8px;
-  margin:6px 0;
-  background:black;
+.btn{
+  padding:10px 16px;
+  background:transparent;
   border:1px solid #00ff66;
   color:#00ff66;
-}
-
-button{
-  background:#00ff66;
-  color:black;
   cursor:pointer;
 }
-button:hover{background:#00cc55}
 
-#qrBox img{margin-top:10px}
-
-.socials{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-}
-
-/* GLOBE */
-#globeWrap{
-  position:relative;
-  height:320px;
-}
-
-#globe{
-  width:100%;
-  height:100%;
-}
-
-/* Avatars */
-.avatars{
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-}
-.avatars span{
-  position:absolute;
-  width:14px;
-  height:14px;
-  border-radius:50%;
+.btn:hover{
   background:#00ff66;
-  opacity:.7;
+  color:black;
 }
-
-.source{
-  font-size:12px;
-  opacity:.6;
-}
-
-footer{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  opacity:.5;
-  padding:10px;
-}
-
-/* TOP BUTTONS */
-.top-buttons {
-  position: absolute;
-  top: 95px;
-  left: 20px;
-  z-index: 10;
-}
-
-.top-buttons button {
-  background: transparent;
-  border: 1px solid #00ff66;
-  color: #00ff66;
-  padding: 8px 12px;
-  margin-right: 8px;
-  cursor: pointer;
-}
-
-.top-buttons button:hover {
-  background: #00ff66;
-  color: #000;
-}
-
-/* PANEL OVERLAY */
-.panel {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.9);
-  display: none;
-  justify-content: center;
-  align-items: center;
-  z-index: 99;
-}
-
-.panel-content {
-  text-align: center;
-  max-width: 600px;
-}
-
-.panel h2 {
-  margin-bottom: 10px;
-}
-
-.panel p {
-  color: #b6ffda;
-  margin-bottom: 20px;
-}
-
-/* CLOSE */
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 22px;
-  cursor: pointer;
-}
-
-/* 360 ROTATION */
-.rotate360 img {
-  width: 260px;
-  border-radius: 12px;
-  animation: spin 18s linear infinite;
-  box-shadow: 0 0 20px #00ff66;
-}
-
-@keyframes spin {
-  from { transform: rotateY(0deg); }
-  to   { transform: rotateY(360deg); }
-}
-
