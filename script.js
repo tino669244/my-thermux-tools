@@ -90,6 +90,38 @@ onwheel=e=>{
   camera.position.z=Math.min(Math.max(camera.position.z,2),6);
 };
 
+/* ===== PANEL LOGIC ===== */
+const panel = document.getElementById("infoPanel");
+const title = document.getElementById("panelTitle");
+const text = document.getElementById("panelText");
+const image = document.getElementById("panelImage");
+
+function openPanel(type) {
+  panel.style.display = "flex";
+
+  if (type === "reseau") {
+    title.innerText = " Réseau mondiale";
+    text.innerText =
+      "Connexion globale, surveillance intelligente, caméras 360°, " +
+      "données en temps réel reliant le monde entier.";
+    image.src =
+      "https://images.unsplash.com/photo-1526378722443-4a9d0a3b99d6";
+  }
+
+  if (type === "pays") {
+    title.innerText = " Pays mondiale";
+    text.innerText =
+      "Chaque pays est un nœud du réseau mondial. " +
+      "Madagascar connecté au reste du monde.";
+    image.src =
+      "https://images.unsplash.com/photo-1502920514313-52581002a659";
+  }
+}
+
+function closePanel() {
+  panel.style.display = "none";
+}
+
 (function animate(){
   requestAnimationFrame(animate);
   globe.rotation.y+=0.002;
