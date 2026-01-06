@@ -2,123 +2,29 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<title>Tino Andraina | Fireworks 2026</title>
+<title>Tino Andraina | 2026 Event</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<style>
-html,body{
-  margin:0;
-  padding:0;
-  background:black;
-  color:#00ff66;
-  font-family:monospace;
-  overflow:hidden;
-}
-
-header{
-  position:relative;
-  height:160px;
-  text-align:center;
-  z-index:10;
-}
-
-h1{
-  margin:10px 0 0;
-  font-size:28px;
-  text-shadow:0 0 10px #00ff66;
-}
-
-.desc{
-  font-size:14px;
-  opacity:.8;
-}
-
-/* CANVAS FIREWORK */
-#fw{
-  position:absolute;
-  inset:0;
-  z-index:1;
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+<!-- BACKGROUND MATRIX -->
+<canvas id="matrix"></canvas>
+
+<!-- HEADER EVENT -->
 <header>
   <h1>Tino Andraina</h1>
   <p class="desc">QR partagé depuis Madagascar vers le monde</p>
-  <canvas id="fw"></canvas>
+  <canvas id="fireworks"></canvas>
 </header>
 
-<script>
-const canvas = document.getElementById("fw");
-const ctx = canvas.getContext("2d");
+<!-- CONTENT -->
+<main>
+  <button class="btn">Réseau mondiale</button>
+  <button class="btn">Pays mondiale</button>
+</main>
 
-function resize(){
-  canvas.width = window.innerWidth;
-  canvas.height = 160;
-}
-resize();
-window.addEventListener("resize", resize);
-
-let particles=[];
-
-/* DRAW TEXT MASK */
-const textCanvas=document.createElement("canvas");
-const tctx=textCanvas.getContext("2d");
-
-function createTextParticles(text){
-  textCanvas.width=canvas.width;
-  textCanvas.height=canvas.height;
-  tctx.clearRect(0,0,textCanvas.width,textCanvas.height);
-  tctx.fillStyle="white";
-  tctx.font="bold 90px monospace";
-  tctx.textAlign="center";
-  tctx.textBaseline="middle";
-  tctx.fillText(text,canvas.width/2,90);
-
-  const img=tctx.getImageData(0,0,textCanvas.width,textCanvas.height);
-  for(let y=0;y<img.height;y+=4){
-    for(let x=0;x<img.width;x+=4){
-      const i=(y*img.width+x)*4;
-      if(img.data[i]>200){
-        particles.push({
-          x:Math.random()*canvas.width,
-          y:canvas.height,
-          tx:x,
-          ty:y,
-          vx:(Math.random()-.5)*6,
-          vy:(Math.random()-.5)*6,
-          life:200
-        });
-      }
-    }
-  }
-}
-
-/* INIT */
-createTextParticles("2026");
-
-/* ANIMATION */
-function draw(){
-  ctx.fillStyle="rgba(0,0,0,0.25)";
-  ctx.fillRect(0,0,canvas.width,canvas.height);
-
-  particles.forEach(p=>{
-    p.x+=(p.tx-p.x)*0.05 + p.vx*0.02;
-    p.y+=(p.ty-p.y)*0.05 + p.vy*0.02;
-    p.life--;
-
-    ctx.fillStyle="#00ff66";
-    ctx.fillRect(p.x,p.y,2,2);
-  });
-
-  particles=particles.filter(p=>p.life>0);
-  requestAnimationFrame(draw);
-}
-
-draw();
-</script>
-
+<script src="script.js"></script>
 </body>
 </html>
