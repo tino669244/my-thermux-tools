@@ -9,12 +9,29 @@
 
 <body>
 
+  <div id="infoPanel" class="panel">
+  <span class="close" onclick="closePanel()">✖</span>
+
+  <div class="panel-content">
+    <h2 id="panelTitle"></h2>
+    <p id="panelText"></p>
+
+    <div class="rotate360">
+      <img id="panelImage" src="" alt="reseau mondiale">
+    </div>
+  </div>
+</div>
+
 <canvas id="matrix"></canvas>
+<div class="top-buttons">
+  <button onclick="openPanel('reseau')"> Réseau mondiale</button>
+  <button onclick="openPanel('pays')"> Pays mondiale</button>
+</div>
 
 <header>
   <h1>Tino Andraina</h1>
   <p>Bonne année 2026</p>
-  <p class="desc">QR partagé depuis Madagascar vers le monde 🌍</p>
+  <p class="desc">QR partagé depuis Madagascar vers le monde </p>
 </header>
 
 <main class="container">
