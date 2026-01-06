@@ -1,29 +1,66 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<title>Tino Andraina | 2026 Event</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <title>Tino Andraina • Global Network 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<!-- BACKGROUND MATRIX -->
+<!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
 <!-- HEADER EVENT -->
 <header>
-  <h1>Tino Andraina</h1>
+  <h1 class="glitch" data-text="Tino Andraina">Tino Andraina</h1>
   <p class="desc">QR partagé depuis Madagascar vers le monde</p>
+
+  <!-- FIREWORKS 2026 -->
   <canvas id="fireworks"></canvas>
 </header>
 
-<!-- CONTENT -->
+<!-- TOP BUTTONS -->
+<div class="top-buttons">
+  <button onclick="openPanel('reseau')">Réseau mondiale</button>
+  <button onclick="openPanel('pays')">Pays mondiale</button>
+</div>
+
+<!-- PANEL OVERLAY -->
+<div id="panel" class="panel">
+  <span class="close" onclick="closePanel()">✖</span>
+  <h2 id="panelTitle"></h2>
+  <p id="panelText"></p>
+</div>
+
+<!-- MAIN CONTENT -->
 <main>
-  <button class="btn">Réseau mondiale</button>
-  <button class="btn">Pays mondiale</button>
+  <!-- QR CODE -->
+  <section class="box">
+    <h2>QR Code</h2>
+    <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram">
+    <button onclick="generateQR()">Générer QR</button>
+    <button onclick="downloadQR()">Télécharger</button>
+    <div id="qrBox"></div>
+  </section>
+
+  <!-- SOCIAL NETWORKS -->
+  <section class="box">
+    <h2>Réseaux sociaux</h2>
+    <div class="socials">
+      <button onclick="quick('https://tiktok.com')">TikTok</button>
+      <button onclick="quick('https://youtube.com')">YouTube</button>
+      <button onclick="quick('https://facebook.com')">Facebook</button>
+      <button onclick="quick('https://instagram.com')">Instagram</button>
+    </div>
+  </section>
 </main>
+
+<!-- SOUND -->
+<audio id="beep" preload="auto"
+  src="https://assets.mixkit.co/sfx/preview/mixkit-tech-click-1140.mp3">
+</audio>
 
 <script src="script.js"></script>
 </body>
