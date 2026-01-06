@@ -12,12 +12,14 @@
 <!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
-<!-- HEADER EVENT -->
+<!-- HEADER -->
 <header>
+  <div class="year-2026">2026</div>
+
   <h1 class="glitch" data-text="Tino Andraina">Tino Andraina</h1>
   <p class="desc">QR partagé depuis Madagascar vers le monde</p>
 
-  <!-- FIREWORKS 2026 -->
+  <!-- FIREWORKS -->
   <canvas id="fireworks"></canvas>
 </header>
 
@@ -27,16 +29,15 @@
   <button onclick="openPanel('pays')">Pays mondiale</button>
 </div>
 
-<!-- PANEL OVERLAY -->
+<!-- PANEL -->
 <div id="panel" class="panel">
   <span class="close" onclick="closePanel()">✖</span>
   <h2 id="panelTitle"></h2>
-  <p id="panelText"></p>
+  <div id="panelText"></div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <main>
-  <!-- QR CODE -->
   <section class="box">
     <h2>QR Code</h2>
     <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram">
@@ -45,7 +46,6 @@
     <div id="qrBox"></div>
   </section>
 
-  <!-- SOCIAL NETWORKS -->
   <section class="box">
     <h2>Réseaux sociaux</h2>
     <div class="socials">
