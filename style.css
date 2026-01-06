@@ -180,3 +180,32 @@ button {
   width: 100%;
   margin: 5px 0;
 }
+
+/* GLOBE */
+#globe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 260px;
+  height: 260px;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  filter: drop-shadow(0 0 25px #00ff88);
+  cursor: grab;
+}
+
+@media (max-width: 600px) {
+  #globe {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* FIREWORK 2026 */
+.year-2026 {
+  text-shadow:
+    0 0 10px #00ff88,
+    0 0 20px #00ff88,
+    0 0 40px #00ff88;
+}
+
