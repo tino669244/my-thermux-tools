@@ -1,1 +1,159 @@
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+  background: #000;
+  color: #0f0;
+  overflow-x: hidden;
+}
+
+/* MATRIX CANVAS */
+#matrix {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -2;
+}
+
+/* HEADER */
+header {
+  text-align: center;
+  padding: 80px 20px;
+  position: relative;
+}
+
+/* GLITCH EFFECT */
+.glitch {
+  font-size: 3em;
+  font-weight: bold;
+  position: relative;
+  color: #0f0;
+}
+
+.glitch::before,
+.glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0.7;
+}
+
+.glitch::before {
+  animation: glitchTop 1.5s infinite linear alternate-reverse;
+  color: #f00;
+}
+
+.glitch::after {
+  animation: glitchBottom 2s infinite linear alternate-reverse;
+  color: #0ff;
+}
+
+@keyframes glitchTop {
+  0% { clip-path: inset(0 0 80% 0); transform: translate(-2px, -2px); }
+  100% { clip-path: inset(0 0 20% 0); transform: translate(2px, 2px); }
+}
+
+@keyframes glitchBottom {
+  0% { clip-path: inset(80% 0 0 0); transform: translate(2px, -2px); }
+  100% { clip-path: inset(20% 0 0 0); transform: translate(-2px, 2px); }
+}
+
+.desc {
+  margin-top: 10px;
+  opacity: 0.8;
+}
+
+/* FIREWORKS */
+#fireworks {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+/* TOP BUTTONS */
+.top-buttons {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.top-buttons button {
+  background: transparent;
+  border: 1px solid #0f0;
+  color: #0f0;
+  padding: 10px 20px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+.top-buttons button:hover {
+  background: #0f0;
+  color: #000;
+}
+
+/* PANEL */
+.panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.9);
+  display: none;
+  padding: 40px;
+  text-align: center;
+}
+
+.panel h2 {
+  margin-bottom: 15px;
+}
+
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  cursor: pointer;
+  font-size: 22px;
+}
+
+/* MAIN */
+main {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  padding: 40px 20px;
+}
+
+.box {
+  border: 1px solid #0f0;
+  padding: 20px;
+  width: 300px;
+  text-align: center;
+}
+
+input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+}
+
+button {
+  padding: 8px 15px;
+  margin: 5px;
+  cursor: pointer;
+}
+
+/* QR */
+#qrBox img {
+  margin-top: 15px;
+}
+
+/* SOCIALS */
+.socials button {
+  width: 100%;
+  margin: 5px 0;
+}
 
