@@ -9,30 +9,32 @@
 
 <body>
 
+<!-- MATRIX BACKGROUND -->
 <canvas id="matrix"></canvas>
 
+<!-- HEADER WITH FIREWORKS -->
 <header>
-  <div class="year-2026">2026</div>
-  <h1 class="glitch" data-text="Tino Andraina">Tino Andraina</h1>
+  <h1>Tino Andraina</h1>
   <p class="desc">QR partagé depuis Madagascar vers le monde</p>
-
   <canvas id="fireworks"></canvas>
 </header>
 
+<!-- TOP BUTTONS -->
 <div class="top-buttons">
   <button onclick="openPanel('reseau')">Réseau mondiale</button>
   <button onclick="openPanel('pays')">Pays mondiale</button>
-  <button onclick="toggleHacker()">ULTRA‑HACKER</button>
 </div>
 
-<!-- PANEL -->
+<!-- PANEL OVERLAY -->
 <div id="panel" class="panel">
   <span class="close" onclick="closePanel()">✖</span>
   <h2 id="panelTitle"></h2>
-  <div id="panelText"></div>
+  <p id="panelText"></p>
 </div>
 
+<!-- MAIN CONTENT -->
 <main>
+  <!-- QR CODE -->
   <section class="box">
     <h2>QR Code</h2>
     <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram">
@@ -41,6 +43,7 @@
     <div id="qrBox"></div>
   </section>
 
+  <!-- SOCIAL NETWORKS -->
   <section class="box">
     <h2>Réseaux sociaux</h2>
     <div class="socials">
@@ -52,31 +55,9 @@
   </section>
 </main>
 
-<!-- GLOBAL NETWORK BOX -->
-<section class="box" id="global-network-box">
-    <h2>Réseau mondiale</h2>
-
-    <div class="network-flex">
-        <div class="network-images">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/18/Globe_icon_green.svg" alt="Globe 1">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Internet_map_1024_-_transparent.png" alt="Globe 2">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/69/Network_icon_green.svg" alt="Globe 3">
-        </div>
-
-        <p>
-        Ny tambajotra sosialy dia sehatra ahafahan’ny olona mifandray,
-        mizara votoaty, mamorona fiarahamonina ary mifanakalo vaovao
-        eran-tany. <br><br>
-        Izy io no manokatra varavarana ho an'i Madagasikara hifandray amin'ny tontolo nomerika iraisam‑pirenena.
-        </p>
-    </div>
-
-    <canvas id="globe" width="260" height="260"></canvas>
-</section>
-
+<!-- SOUND -->
 <audio id="beep" preload="auto"
-  src="https://assets.mixkit.co/sfx/preview/mixkit-tech-click-1140.mp3">
-</audio>
+  src="https://assets.mixkit.co/sfx/preview/mixkit-tech-click-1140.mp3"></audio>
 
 <script src="script.js"></script>
 </body>
