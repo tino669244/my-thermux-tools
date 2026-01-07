@@ -1,63 +1,54 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <title>Tino Andraina • Global Network 2026</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Réseau Mondiale</title>
+    <link rel="stylesheet" href="style.css" />
 </head>
-
 <body>
 
-<!-- MATRIX BACKGROUND -->
-<canvas id="matrix"></canvas>
+<div class="title">Réseau Mondiale / Pays Mondiale</div>
 
-<!-- HEADER WITH FIREWORKS -->
-<header>
-  <h1>Tino Andraina</h1>
-  <p class="desc">QR partagé depuis Madagascar vers le monde</p>
-  <canvas id="fireworks"></canvas>
-</header>
+<div class="map-container">
+    <svg id="worldMap" viewBox="0 0 1200 650">
 
-<!-- TOP BUTTONS -->
-<div class="top-buttons">
-  <button onclick="openPanel('reseau')">Réseau mondiale</button>
-  <button onclick="openPanel('pays')">Pays mondiale</button>
+        <!-- === BACKGROUND MAP (SVG) === -->
+        <path id="world"
+              d="M1142 304l-28-14-14-30-48-36-29-5-63-42-51 8-11-6-44 7-39-8-36-1-12 14-40 4-18-12-32 6-14 23-37 9-10 19-32 5-23-14-19 4-3 21-38 16-41 5-9 18-33 14-29-3-21 11-44-1-38 16-32 2-13 30 19 28 33 7 28 12 14 26 47 13 26 18 41 8 12 23 46 10 21 18 48-2 39 10 28 18 52 12 40 3 14-18 44 9 38-6 33-15 52-5 27-21 39-12 18-27 33-22 41-11 19-31z"
+              fill="#0E4D92" opacity="0.9" />
+
+        <!-- === CITY NODES + AVATARS === -->
+        <!-- YOU CAN ADD MORE EASILY -->
+
+        <!-- Paris -->
+        <circle cx="560" cy="220" r="30" fill="#fff" stroke="#00bfff" stroke-width="3"/>
+        <image href="avatar1.png" x="530" y="190" width="60" height="60" clip-path="circle(30px at 30px 30px)"/>
+        <text x="560" y="290" class="city-name">Paris</text>
+
+        <!-- New York -->
+        <circle cx="280" cy="250" r="30" fill="#fff" stroke="#00bfff" stroke-width="3"/>
+        <image href="avatar2.png" x="250" y="220" width="60" height="60" clip-path="circle(30px at 30px 30px)"/>
+        <text x="280" y="320" class="city-name">New York</text>
+
+        <!-- Tokyo -->
+        <circle cx="960" cy="280" r="30" fill="#fff" stroke="#00bfff" stroke-width="3"/>
+        <image href="avatar3.png" x="930" y="250" width="60" height="60" clip-path="circle(30px at 30px 30px)"/>
+        <text x="960" y="350" class="city-name">Tokyo</text>
+
+        <!-- Madagascar -->
+        <circle cx="820" cy="480" r="30" fill="#fff" stroke="#00bfff" stroke-width="3"/>
+        <image href="avatar4.png" x="790" y="450" width="60" height="60" clip-path="circle(30px at 30px 30px)"/>
+        <text x="820" y="560" class="city-name">Madagascar</text>
+
+        <!-- === CONNECTION LINES === -->
+        <line x1="560" y1="220" x2="280" y2="250" class="link"/>
+        <line x1="560" y1="220" x2="960" y2="280" class="link"/>
+        <line x1="960" y1="280" x2="820" y2="480" class="link"/>
+        <line x1="280" y1="250" x2="820" y2="480" class="link"/>
+
+    </svg>
 </div>
-
-<!-- PANEL OVERLAY -->
-<div id="panel" class="panel">
-  <span class="close" onclick="closePanel()">✖</span>
-  <h2 id="panelTitle"></h2>
-  <p id="panelText"></p>
-</div>
-
-<!-- MAIN CONTENT -->
-<main>
-  <!-- QR CODE -->
-  <section class="box">
-    <h2>QR Code</h2>
-    <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook, Instagram">
-    <button onclick="generateQR()">Générer QR</button>
-    <button onclick="downloadQR()">Télécharger</button>
-    <div id="qrBox"></div>
-  </section>
-
-  <!-- SOCIAL NETWORKS -->
-  <section class="box">
-    <h2>Réseaux sociaux</h2>
-    <div class="socials">
-      <button onclick="quick('https://tiktok.com')">TikTok</button>
-      <button onclick="quick('https://youtube.com')">YouTube</button>
-      <button onclick="quick('https://facebook.com')">Facebook</button>
-      <button onclick="quick('https://instagram.com')">Instagram</button>
-    </div>
-  </section>
-</main>
-
-<!-- SOUND -->
-<audio id="beep" preload="auto"
-  src="https://assets.mixkit.co/sfx/preview/mixkit-tech-click-1140.mp3"></audio>
 
 <script src="script.js"></script>
 </body>
