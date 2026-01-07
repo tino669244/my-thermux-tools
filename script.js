@@ -4,7 +4,7 @@ const ctx = c.getContext("2d");
 c.width = innerWidth;
 c.height = innerHeight;
 
-const chars = "0123456789TINOANDRAINA";
+const chars = "tinoandraina";
 const size = 16;
 const cols = Math.floor(c.width / size);
 const drops = Array(cols).fill(0);
