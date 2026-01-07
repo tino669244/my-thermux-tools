@@ -1,47 +1,124 @@
-* { margin:0; padding:0; box-sizing:border-box; font-family:monospace; }
-body { background:#000; color:#0f0; overflow-x:hidden; }
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: black;
+  color: #00ff66;
+  font-family: monospace;
+  overflow-x: hidden;
+}
 
-/* MATRIX */
-#matrix { position:fixed; inset:0; z-index:-3; }
+/* MATRIX BACKGROUND */
+#matrix {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
 
 /* HEADER */
-header { text-align:center; padding:70px 20px 20px; position:relative; }
-.year-2026 { position:absolute; top:10px; right:25px; font-size:50px; opacity:0.25; animation:flicker 2s infinite; }
-@keyframes flicker { 0%,100% { opacity:0.2; } 50%{ opacity:0.5; } }
+header {
+  text-align: center;
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+}
+header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+.desc {
+  opacity: .7;
+  margin-bottom: 10px;
+}
 
-.glitch { font-size:2.5em; position:relative; }
-.glitch::before, .glitch::after { content:attr(data-text); position:absolute; left:0; }
-.glitch::before{ color:red; animation:g1 1.5s infinite; }
-.glitch::after { color:cyan; animation:g2 2s infinite; }
-@keyframes g1 { 0%{ transform:translate(-2px,-2px); } 100%{ transform:translate(2px,2px); } }
-@keyframes g2 { 0%{ transform:translate(2px,-2px); } 100%{ transform:translate(-2px,2px); } }
+/* FIREWORKS */
+#fireworks {
+  width: 100%;
+  height: 180px;
+  display: block;
+}
 
-#fireworks { position:absolute; inset:0; height:220px; margin:auto; z-index:-2; }
+/* BUTTONS TOP */
+.top-buttons {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  z-index: 10;
+}
+.top-buttons button {
+  background: transparent;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+  padding: 8px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.top-buttons button:hover {
+  background: #00ff66;
+  color: #000;
+}
 
-/* BUTTONS */
-.top-buttons { text-align:center; margin:20px 0; }
-.top-buttons button { background:transparent; border:1px solid #0f0; padding:8px 16px; margin:5px; color:#0f0; cursor:pointer; }
-.top-buttons button:hover { background:#0f0; color:#000; }
+/* PANEL OVERLAY */
+.panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.93);
+  display: none;
+  text-align: center;
+  padding-top: 120px;
+  z-index: 99;
+}
+.panel h2 { margin-bottom: 10px; }
+.panel p { color:#b6ffda; max-width:600px; margin:auto; }
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+  font-size: 24px;
+}
 
-/* PANEL */
-.panel { position:fixed; inset:0; background:rgba(0,0,0,0.97); display:none; padding:40px 20px; overflow-y:auto; text-align:center; }
-.close { position:absolute; top:20px; right:35px; cursor:pointer; font-size:25px; }
-.panel img { width:220px; margin:20px auto; filter:drop-shadow(0 0 8px #00ff88); }
+/* MAIN CONTENT */
+main {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+.box {
+  flex: 1;
+  background: rgba(0,255,100,0.06);
+  padding: 15px;
+  border: 1px solid #00ff6633;
+  border-radius: 8px;
+}
 
-/* MAIN */
-main { display:flex; justify-content:center; flex-wrap:wrap; gap:25px; padding:30px 10px; }
-.box { border:1px solid #0f0; padding:20px; width:280px; text-align:center; }
-input { width:100%; padding:8px; margin:10px 0; }
+/* INPUTS + BUTTONS */
+input,button {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  background: black;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+}
+button {
+  background: #00ff66;
+  color: black;
+  cursor: pointer;
+}
+button:hover { background:#00cc55; }
 
-/* GLOBAL NETWORK */
-#global-network-box { margin-top:20px; }
-.network-flex { display:flex; gap:12px; align-items:center; justify-content:center; flex-wrap:wrap; }
-.network-images { display:flex; flex-direction:column; gap:8px; }
-.network-images img { width:100px; border-radius:6px; box-shadow:0 0 10px #00ff88; }
-#global-network-box p { width:55%; font-size:13px; line-height:1.4; opacity:0.85; }
+/* SOCIAL GRID */
+.socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
 
-/* ULTRA HACKER */
-body.ultra { background:#001a0f; color:#00ff88; }
-body.ultra .box, body.ultra button { box-shadow:0 0 20px #00ff88; }
-body.ultra #matrix { filter:brightness(1.4); }
-body.ultra #globe { filter:drop-shadow(0 0 40px #00ff88); }
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 10px;
+  opacity: .5;
+}
