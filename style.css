@@ -1,49 +1,124 @@
+* { box-sizing: border-box; }
 body {
-    margin: 0;
-    background: #02050f;
-    color: white;
-    font-family: Poppins, sans-serif;
-    overflow-x: hidden;
+  margin: 0;
+  background: black;
+  color: #00ff66;
+  font-family: monospace;
+  overflow-x: hidden;
 }
 
-.title {
-    text-align: center;
-    font-size: 40px;
-    margin: 20px 0;
-    font-weight: 600;
-    letter-spacing: 3px;
-    color: #00eaff;
-    text-shadow: 0 0 15px #00eaff;
+/* MATRIX BACKGROUND */
+#matrix {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
 }
 
-.map-container {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding-top: 20px;
+/* HEADER */
+header {
+  text-align: center;
+  padding: 25px;
+  position: relative;
+  z-index: 2;
+}
+header h1 {
+  font-size: 28px;
+  margin: 0;
+}
+.desc {
+  opacity: .7;
+  margin-bottom: 10px;
 }
 
-svg {
-    width: 90%;
-    max-width: 1300px;
+/* FIREWORKS */
+#fireworks {
+  width: 100%;
+  height: 180px;
+  display: block;
 }
 
-/* Lines */
-.link {
-    stroke: #00d0ff;
-    stroke-width: 4;
-    opacity: 0.8;
-    stroke-linecap: round;
+/* BUTTONS TOP */
+.top-buttons {
+  position: absolute;
+  top: 90px;
+  left: 20px;
+  z-index: 10;
+}
+.top-buttons button {
+  background: transparent;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+  padding: 8px 12px;
+  margin-right: 8px;
+  cursor: pointer;
+}
+.top-buttons button:hover {
+  background: #00ff66;
+  color: #000;
 }
 
-/* City name */
-.city-name {
-    fill: white;
-    font-size: 22px;
-    text-anchor: middle;
+/* PANEL OVERLAY */
+.panel {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.93);
+  display: none;
+  text-align: center;
+  padding-top: 120px;
+  z-index: 99;
+}
+.panel h2 { margin-bottom: 10px; }
+.panel p { color:#b6ffda; max-width:600px; margin:auto; }
+.close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  cursor: pointer;
+  font-size: 24px;
 }
 
-/* Glow */
-circle {
-    filter: drop-shadow(0 0 8px #00d0ff);
+/* MAIN CONTENT */
+main {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+}
+.box {
+  flex: 1;
+  background: rgba(0,255,100,0.06);
+  padding: 15px;
+  border: 1px solid #00ff6633;
+  border-radius: 8px;
+}
+
+/* INPUTS + BUTTONS */
+input,button {
+  width: 100%;
+  padding: 8px;
+  margin: 6px 0;
+  background: black;
+  border: 1px solid #00ff66;
+  color: #00ff66;
+}
+button {
+  background: #00ff66;
+  color: black;
+  cursor: pointer;
+}
+button:hover { background:#00cc55; }
+
+/* SOCIAL GRID */
+.socials {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 10px;
+  opacity: .5;
 }
