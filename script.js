@@ -1,96 +1,137 @@
-/* ===== MATRIX RAIN + NAME ===== */
-const c = document.getElementById("matrix");
-const ctx = c.getContext("2d");
-c.width = innerWidth;
-c.height = innerHeight;
+*{box-sizing:border-box;}
 
-const chars = "tinoandraina";
-const size = 16;
-const cols = Math.floor(c.width / size);
-const drops = Array(cols).fill(0);
-
-setInterval(() => {
-  ctx.fillStyle = "rgba(0,0,0,0.08)";
-  ctx.fillRect(0,0,c.width,c.height);
-
-  ctx.fillStyle = "#00ff66";
-  ctx.font = size + "px monospace";
-
-  drops.forEach((y,i)=>{
-    const t = chars[Math.random()*chars.length|0];
-    ctx.fillText(t, i*size, y*size);
-
-    if (y*size > c.height && Math.random() > 0.975) drops[i] = 0;
-    drops[i]++;
-  });
-}, 50);
-
-
-/* ===== FIREWORKS 2026 ===== */
-const fw = document.getElementById("fireworks");
-const fctx = fw.getContext("2d");
-fw.width = innerWidth;
-fw.height = 180;
-
-function firework() {
-  const x = Math.random()*fw.width;
-  const y = Math.random()*80 + 40;
-
-  for(let i=0;i<40;i++){
-    setTimeout(()=>{
-      fctx.fillStyle="#00ff66";
-      fctx.fillRect(x+Math.random()*40-20, y+Math.random()*40-20, 2, 2);
-    }, i*15);
-  }
-}
-setInterval(firework, 900);
-
-
-/* ===== PANEL LOGIC ===== */
-const panel = document.getElementById("panel");
-const title = document.getElementById("panelTitle");
-const text = document.getElementById("panelText");
-
-function openPanel(t){
-  panel.style.display = "block";
-
-  if(t==="reseau"){
-    title.innerText = "Réseau mondiale";
-    text.innerText =
-      "Le réseau mondial relie chaque continent, chaque pays et chaque plateforme. " +
-      "Données en temps réel – Intelligence – Communication – Sécurité – Partage.";
-  }
-  if(t==="pays"){
-    title.innerText = "Pays mondiale";
-    text.innerText =
-      "Chaque pays devient un nœud du réseau. Madagascar connecté au monde entier, " +
-      "partage global et interactions numériques.";
-  }
-
-  document.getElementById("beep").play();
+body{
+  margin:0;
+  background:black;
+  color:#00ff66;
+  font-family:monospace;
+  overflow:hidden;
 }
 
-function closePanel(){
-  panel.style.display = "none";
+/* MATRIX */
+#matrix{
+  position:fixed;
+  inset:0;
+  z-index:0;
 }
 
+header{
+  position:relative;
+  z-index:2;
+  text-align:center;
+  padding:20px;
+  border-bottom:1px solid #00ff6633;
+}
 
-/* ===== QR CODE ===== */
-function generateQR(){
-  const t = qrInput.value;
-  if(!t) return;
-  qrBox.innerHTML =
-    `<img src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=${encodeURIComponent(t)}">`;
+.sub{opacity:.7;}
+
+.container{
+  position:relative;
+  z-index:2;
+  display:flex;
+  gap:20px;
+  padding:20px;
 }
-function downloadQR(){
-  const img = document.querySelector("#qrBox img");
-  if(!img) return;
-  const a = document.createElement("a");
-  a.href = img.src;
-  a.download = "qr.png";
-  a.click();
+
+.panel{
+  flex:1;
+  background:rgba(0,255,100,0.05);
+  border:1px solid #00ff6633;
+  padding:15px;
+  border-radius:8px;
 }
-function quick(url){
-  qrInput.value = url;
-  generateQR();
+
+/* INPUT & BUTTONS */
+input,button{
+  width:100%;
+  padding:8px;
+  margin:6px 0;
+  background:black;
+  border:1px solid #00ff66;
+  color:#00ff66;
+}
+button{
+  background:#00ff66;
+  color:black;
+  cursor:pointer;
+}
+button:hover{background:#00cc55;}
+
+.socials{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:6px;
+}
+
+#qrBox img{margin-top:10px}
+
+/* MAP */
+#mapBox{
+  width:100%;
+  height:350px;
+  border:1px solid #00ff6633;
+  background:black;
+  overflow:hidden;
+  position:relative;
+}
+
+#worldmap{
+  width:100%;
+  height:100%;
+}
+
+/* PANEL POPUP */
+.panel-popup{
+  position:fixed;
+  inset:0;
+  display:none;
+  background:rgba(0,0,0,0.9);
+  z-index:99;
+  text-align:center;
+  padding-top:60px;
+}
+
+.close{
+  position:absolute;
+  top:20px;
+  right:30px;
+  font-size:22px;
+  cursor:pointer;
+}
+
+/* ROTATION 360 */
+.rotate360 img{
+  width:260px;
+  border-radius:12px;
+  animation:spin 18s linear infinite;
+  box-shadow:0 0 20px #00ff66;
+}
+
+@keyframes spin{
+  from{transform:rotateY(0);}
+  to{transform:rotateY(360deg);}
+}
+
+.source{
+  opacity:0.5;
+  font-size:12px;
+}
+
+.top-buttons{
+  position:fixed;
+  top:90px;
+  left:20px;
+  z-index:10;
+}
+
+.top-buttons button{
+  background:transparent;
+  border:1px solid #00ff66;
+  color:#00ff66;
+  padding:8px 12px;
+  margin-right:8px;
+}
+.top-buttons button:hover{
+  background:#00ff66;
+  color:black;
 }
