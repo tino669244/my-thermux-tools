@@ -3,8 +3,8 @@ const c=document.getElementById("matrix");
 const ctx=c.getContext("2d");
 c.width=innerWidth; c.height=innerHeight;
 
-const chars="0123456789TINOANDRAINA";
-const size=14;
+const chars="012345TINOANDRAINA";
+const size=05;
 const cols=c.width/size;
 const drops=Array(Math.floor(cols)).fill(0);
 
