@@ -1,87 +1,45 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
-<title>Tino Andraina • Global Hacker Network</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacker Interface</title>
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<canvas id="matrix"></canvas>
+    <!-- ÉCRAN 1 - ACCUEIL -->
+    <div id="screen1" class="screen">
+        <img src="glowwall.jpg" class="bg" alt="background">
+        
+        <div class="glitch-title">
+            <span>TAPEZ ICI</span>
+            <span>TAPEZ ICI</span>
+            <span>TAPEZ ICI</span>
+        </div>
 
-<!-- NAV TOP -->
-<div class="top-buttons">
-  <button onclick="openPanel('reseau')">Réseau mondiale</button>
-  <button onclick="openPanel('pays')">Pays mondiale</button>
-</div>
-
-<header>
-  <h1>TINO ANDRAINA</h1>
-  <p class="sub">Global Hacker Network • 2026</p>
-</header>
-
-<main class="container">
-
-  <!-- QR CODE -->
-  <section class="panel">
-    <h2>QR Code</h2>
-    <input id="qrInput" placeholder="Lien TikTok / YouTube / Facebook / IG" />
-    <button onclick="generateQR()">Generate</button>
-    <button onclick="downloadQR()">Download</button>
-    <div id="qrBox"></div>
-
-    <div class="socials">
-      <button onclick="quick('https://tiktok.com')">TikTok</button>
-      <button onclick="quick('https://youtube.com')">YouTube</button>
-      <button onclick="quick('https://facebook.com')">Facebook</button>
-      <button onclick="quick('https://instagram.com')">Instagram</button>
-    </div>
-  </section>
-
-  <!-- MAP HACKER LUMINEUX -->
-  <section class="panel map-panel">
-    <h2>Cyber Map — Monde</h2>
-
-    <div id="mapBox">
-      <!-- SVG MAP HACKER LUMINEUX -->
-      <svg id="worldmap" viewBox="0 0 2000 1100">
-
-        <!-- BACKGROUND GRID -->
-        <rect width="2000" height="1100" fill="none" stroke="#003300" stroke-width="1" 
-          stroke-dasharray="5 8" opacity="0.3" />
-
-        <!-- MAP NEON (outline continent) -->
-        <image href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-               width="2000" height="1100"
-               style="filter: drop-shadow(0 0 12px #00ff66);" />
-
-        <!-- Madagascar marker -->
-        <circle cx="1320" cy="820" r="10" fill="#00ff66" />
-
-        <!-- Rays -->
-        <g id="rays"></g>
-
-      </svg>
+        <button id="enterBtn" class="neon-btn">Entrer</button>
     </div>
 
-    <p class="source">SOURCE : Madagascar → Monde connecté</p>
-  </section>
+    <!-- ÉCRAN 2 - INTERFACE HACKER -->
+    <div id="screen2" class="screen hidden">
+        <h1 class="matrix-title">Interface Hacker Chargée...</h1>
 
-</main>
+        <div class="panel">
+            <button class="tab" onclick="showPanel('reseau')">Réseau Mondiale</button>
+            <button class="tab" onclick="showPanel('pays')">Pays Mondiale</button>
+        </div>
 
-<!-- POPUP PANEL -->
-<div id="infoPanel" class="panel-popup">
-  <span class="close" onclick="closePanel()">✖</span>
-  <h2 id="panelTitle"></h2>
-  <p id="panelText"></p>
-  <div class="rotate360">
-    <img id="panelImage" src="" />
-  </div>
-</div>
+        <div id="reseau" class="content-box hidden">
+            <h2>Réseaux Sociaux Mondiaux</h2>
+            <p>Facebook, TikTok, Instagram, YouTube, WhatsApp…</p>
+        </div>
 
-<footer>© 2026 • Tino Andraina</footer>
+        <div id="pays" class="content-box hidden">
+            <h2>Liste des pays du monde</h2>
+            <p>Hisy scroll 2 colonnes eto avy eo.</p>
+        </div>
+    </div>
 
 <script src="script.js"></script>
 </body>
