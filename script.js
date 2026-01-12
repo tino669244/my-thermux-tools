@@ -3,7 +3,7 @@ const c=document.getElementById("matrix");
 const ctx=c.getContext("2d");
 c.width=innerWidth; c.height=innerHeight;
 
-const chars="01234567TINOANDRAINA";
+const chars="tino andraina";
 const size=15;
 const cols=c.width/size;
 const drops=Array(Math.floor(cols)).fill(0);
@@ -48,7 +48,7 @@ function openPanel(type){
 
   if(type==="reseau"){
     t.innerText="Réseau mondiale";
-    c.innerText="Connexion globale, surveillance intelligente, caméras 360°, analyse data, cyber-sécurité.";
+    c.innerText="Connexion globale, surveillance intelligente, caméras 0°, analyse data, cyber-sécurité.";
     i.src="https://images.unsplash.com/photo-1526378722443-4a9d0a3b99d6";
   }
 
