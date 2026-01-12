@@ -1,137 +1,80 @@
-*{box-sizing:border-box;}
+/* ===== MATRIX ===== */
+const c=document.getElementById("matrix");
+const ctx=c.getContext("2d");
+c.width=innerWidth; c.height=innerHeight;
 
-body{
-  margin:0;
-  background:black;
-  color:#00ff66;
-  font-family:monospace;
-  overflow:hidden;
+const chars="0123456789TINOANDRAINA";
+const size=14;
+const cols=c.width/size;
+const drops=Array(Math.floor(cols)).fill(0);
+
+setInterval(()=>{
+  ctx.fillStyle="rgba(0,0,0,0.07)";
+  ctx.fillRect(0,0,c.width,c.height);
+  ctx.fillStyle="#00ff66";
+  ctx.font=size+"px monospace";
+
+  drops.forEach((y,i)=>{
+    const text = chars[Math.random()*chars.length|0];
+    ctx.fillText(text,i*size,y*size);
+    if(y*size>c.height && Math.random()>0.98) drops[i]=0;
+    drops[i]++;
+  });
+},50);
+
+/* ===== QR ===== */
+function generateQR(){
+  const t=qrInput.value;
+  qrBox.innerHTML=`<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(t)}">`;
+}
+function downloadQR(){
+  const img=document.querySelector("#qrBox img");
+  if(!img)return;
+  const a=document.createElement("a");
+  a.href=img.src;
+  a.download="qr.png";
+  a.click();
+}
+function quick(u){qrInput.value=u}
+
+/* ===== POPUP ===== */
+function openPanel(type){
+  const p = document.getElementById("infoPanel");
+  const t = document.getElementById("panelTitle");
+  const c = document.getElementById("panelText");
+  const i = document.getElementById("panelImage");
+
+  p.style.display="block";
+
+  if(type==="reseau"){
+    t.innerText="Réseau mondiale";
+    c.innerText="Connexion globale, surveillance intelligente, caméras 360°, analyse data, cyber-sécurité.";
+    i.src="https://images.unsplash.com/photo-1526378722443-4a9d0a3b99d6";
+  }
+
+  if(type==="pays"){
+    t.innerText="Pays mondiale";
+    c.innerText="Chaque pays est un nœud dans le réseau global. Le monde connecté à Madagascar.";
+    i.src="https://images.unsplash.com/photo-1502920514313-52581002a659";
+  }
 }
 
-/* MATRIX */
-#matrix{
-  position:fixed;
-  inset:0;
-  z-index:0;
+function closePanel(){
+  document.getElementById("infoPanel").style.display="none";
 }
 
-header{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:20px;
-  border-bottom:1px solid #00ff6633;
-}
+/* ===== MAP RAYS ===== */
+const rays = document.getElementById("rays");
 
-.sub{opacity:.7;}
+for(let i=0;i<25;i++){
+  const x = 1320, y = 820;
+  const tx = Math.random()*2000;
+  const ty = Math.random()*1100;
 
-.container{
-  position:relative;
-  z-index:2;
-  display:flex;
-  gap:20px;
-  padding:20px;
-}
-
-.panel{
-  flex:1;
-  background:rgba(0,255,100,0.05);
-  border:1px solid #00ff6633;
-  padding:15px;
-  border-radius:8px;
-}
-
-/* INPUT & BUTTONS */
-input,button{
-  width:100%;
-  padding:8px;
-  margin:6px 0;
-  background:black;
-  border:1px solid #00ff66;
-  color:#00ff66;
-}
-button{
-  background:#00ff66;
-  color:black;
-  cursor:pointer;
-}
-button:hover{background:#00cc55;}
-
-.socials{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-}
-
-#qrBox img{margin-top:10px}
-
-/* MAP */
-#mapBox{
-  width:100%;
-  height:350px;
-  border:1px solid #00ff6633;
-  background:black;
-  overflow:hidden;
-  position:relative;
-}
-
-#worldmap{
-  width:100%;
-  height:100%;
-}
-
-/* PANEL POPUP */
-.panel-popup{
-  position:fixed;
-  inset:0;
-  display:none;
-  background:rgba(0,0,0,0.9);
-  z-index:99;
-  text-align:center;
-  padding-top:60px;
-}
-
-.close{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:22px;
-  cursor:pointer;
-}
-
-/* ROTATION 360 */
-.rotate360 img{
-  width:260px;
-  border-radius:12px;
-  animation:spin 18s linear infinite;
-  box-shadow:0 0 20px #00ff66;
-}
-
-@keyframes spin{
-  from{transform:rotateY(0);}
-  to{transform:rotateY(360deg);}
-}
-
-.source{
-  opacity:0.5;
-  font-size:12px;
-}
-
-.top-buttons{
-  position:fixed;
-  top:90px;
-  left:20px;
-  z-index:10;
-}
-
-.top-buttons button{
-  background:transparent;
-  border:1px solid #00ff66;
-  color:#00ff66;
-  padding:8px 12px;
-  margin-right:8px;
-}
-.top-buttons button:hover{
-  background:#00ff66;
-  color:black;
+  rays.innerHTML += `
+    <line x1="${x}" y1="${y}" x2="${tx}" y2="${ty}"
+      stroke="#00ff66" stroke-width="2" 
+      stroke-opacity="0.7"
+      style="filter: drop-shadow(0 0 6px #00ff66);" />
+  `;
 }
