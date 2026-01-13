@@ -1,137 +1,234 @@
-*{box-sizing:border-box;}
+/* --------------------------
+   RESET
+-------------------------- */
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Consolas', monospace;
+}
 
 body{
-  margin:0;
-  background:black;
-  color:#00ff66;
-  font-family:monospace;
-  overflow:hidden;
+  background:#000;
+  overflow-x:hidden;
+  color:#00ff99;
 }
 
-/* MATRIX */
+/* --------------------------
+   MATRIX BACKGROUND
+-------------------------- */
 #matrix{
   position:fixed;
-  inset:0;
-  z-index:0;
-}
-
-header{
-  position:relative;
-  z-index:2;
-  text-align:center;
-  padding:20px;
-  border-bottom:1px solid #00ff6633;
-}
-
-.sub{opacity:.7;}
-
-.container{
-  position:relative;
-  z-index:2;
-  display:flex;
-  gap:20px;
-  padding:20px;
-}
-
-.panel{
-  flex:1;
-  background:rgba(0,255,100,0.05);
-  border:1px solid #00ff6633;
-  padding:15px;
-  border-radius:8px;
-}
-
-/* INPUT & BUTTONS */
-input,button{
-  width:100%;
-  padding:8px;
-  margin:6px 0;
-  background:black;
-  border:1px solid #00ff66;
-  color:#00ff66;
-}
-button{
-  background:#00ff66;
-  color:black;
-  cursor:pointer;
-}
-button:hover{background:#00cc55;}
-
-.socials{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:6px;
-}
-
-#qrBox img{margin-top:10px}
-
-/* MAP */
-#mapBox{
-  width:100%;
-  height:350px;
-  border:1px solid #00ff6633;
-  background:black;
-  overflow:hidden;
-  position:relative;
-}
-
-#worldmap{
+  top:0;
+  left:0;
   width:100%;
   height:100%;
+  z-index:-1;
+  background:#000;
 }
 
-/* PANEL POPUP */
-.panel-popup{
-  position:fixed;
-  inset:0;
-  display:none;
-  background:rgba(0,0,0,0.9);
-  z-index:99;
-  text-align:center;
-  padding-top:60px;
-}
-
-.close{
-  position:absolute;
-  top:20px;
-  right:30px;
-  font-size:22px;
-  cursor:pointer;
-}
-
-/* ROTATION 360 */
-.rotate360 img{
-  width:260px;
-  border-radius:12px;
-  animation:spin 18s linear infinite;
-  box-shadow:0 0 20px #00ff66;
-}
-
-@keyframes spin{
-  from{transform:rotateY(0);}
-  to{transform:rotateY(360deg);}
-}
-
-.source{
-  opacity:0.5;
-  font-size:12px;
-}
-
+/* --------------------------
+   TOP NAV BUTTONS
+-------------------------- */
 .top-buttons{
   position:fixed;
-  top:90px;
-  left:20px;
+  top:15px;
+  left:15px;
+  display:flex;
+  gap:10px;
   z-index:10;
 }
 
 .top-buttons button{
-  background:transparent;
-  border:1px solid #00ff66;
-  color:#00ff66;
-  padding:8px 12px;
-  margin-right:8px;
+  padding:10px 20px;
+  border:1px solid #00ff99;
+  background:rgba(0,0,0,0.4);
+  color:#00ff99;
+  cursor:pointer;
+  text-transform:uppercase;
+  transition:0.3s;
+  backdrop-filter:blur(3px);
 }
+
 .top-buttons button:hover{
-  background:#00ff66;
-  color:black;
+  background:#00ff99;
+  color:#000;
+  box-shadow:0 0 10px #00ff99;
+}
+
+/* --------------------------
+   HEADER
+-------------------------- */
+header{
+  text-align:center;
+  margin-top:80px;
+  color:#00ff99;
+}
+
+header h1{
+  font-size:3rem;
+  letter-spacing:3px;
+  text-shadow:0 0 15px #00ff99;
+}
+
+header .sub{
+  opacity:0.7;
+  letter-spacing:2px;
+}
+
+/* --------------------------
+   MAIN PANELS
+-------------------------- */
+.container{
+  width:95%;
+  max-width:1200px;
+  margin:50px auto;
+  display:flex;
+  flex-direction:column;
+  gap:40px;
+}
+
+.panel{
+  padding:25px;
+  background:rgba(0,0,0,0.55);
+  border:1px solid #00ff99;
+  box-shadow:0 0 20px #003322 inset, 0 0 10px #00ff66;
+  backdrop-filter:blur(4px);
+}
+
+.panel h2{
+  margin-bottom:15px;
+  color:#00ffaa;
+  letter-spacing:1px;
+  text-shadow:0 0 10px #00ffaa;
+}
+
+/* --------------------------
+   QR CODE & BUTTONS
+-------------------------- */
+#qrInput{
+  width:100%;
+  padding:10px;
+  margin-bottom:10px;
+  border:1px solid #00ff99;
+  background:rgba(0,0,0,0.4);
+  color:#00ff99;
+}
+
+.panel button{
+  margin-top:10px;
+  padding:10px 20px;
+  border:1px solid #00ff99;
+  background:rgba(0,0,0,0.4);
+  color:#00ff99;
+  cursor:pointer;
+  transition:0.3s;
+}
+
+.panel button:hover{
+  background:#00ff99;
+  color:#000;
+}
+
+#qrBox{
+  margin-top:15px;
+}
+
+/* --------------------------
+   SOCIAL BUTTONS
+-------------------------- */
+.socials{
+  margin-top:15px;
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+}
+
+/* --------------------------
+   MAP PANEL
+-------------------------- */
+.map-panel{
+  position:relative;
+}
+
+#mapBox{
+  width:100%;
+  overflow:hidden;
+  border:1px solid #00ff55;
+  padding:10px;
+  background:rgba(0,0,0,0.4);
+}
+
+#worldmap{
+  width:100%;
+  filter:drop-shadow(0 0 10px #00ff66);
+}
+
+.source{
+  margin-top:10px;
+  font-size:0.9rem;
+  opacity:0.6;
+}
+
+/* --------------------------
+   POPUP PANEL
+-------------------------- */
+.panel-popup{
+  display:none;
+  position:fixed;
+  top:50%;
+  left:50%;
+  transform:translate(-50%, -50%);
+  width:90%;
+  max-width:700px;
+  background:rgba(0,0,0,0.75);
+  border:1px solid #00ff99;
+  box-shadow:0 0 25px #00ff99;
+  padding:25px;
+  z-index:999;
+  backdrop-filter:blur(6px);
+}
+
+.panel-popup h2{
+  margin-bottom:10px;
+  color:#00ffcc;
+  text-shadow:0 0 12px #00ffcc;
+}
+
+.panel-popup p{
+  white-space:pre-line;
+  line-height:1.6;
+  color:#aaffdd;
+}
+
+.panel-popup img{
+  margin-top:20px;
+  width:100%;
+  border-radius:10px;
+  box-shadow:0 0 15px #00ff99;
+}
+
+.close{
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:20px;
+  color:#00ff99;
+  text-shadow:0 0 10px #00ff99;
+}
+
+.close:hover{
+  color:#ff4444;
+  text-shadow:0 0 10px #ff0000;
+}
+
+/* --------------------------
+   FOOTER
+-------------------------- */
+footer{
+  margin:50px 0;
+  text-align:center;
+  opacity:0.5;
+  color:#00ff99;
 }
