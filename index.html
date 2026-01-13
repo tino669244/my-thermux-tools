@@ -75,7 +75,10 @@
 <div id="infoPanel" class="panel-popup">
   <span class="close" onclick="closePanel()">✖</span>
   <h2 id="panelTitle"></h2>
-  <p id="panelText"></p>
+
+  <!-- ATO NO HAPETRAKO ILAY CONTENU FENO -->
+  <p id="panelText" style="white-space: pre-line;"></p>
+
   <div class="rotate360">
     <img id="panelImage" src="" />
   </div>
@@ -84,5 +87,61 @@
 <footer>© 2026 • Tino Andraina</footer>
 
 <script src="script.js"></script>
+
+<script>
+/* --- Asiana contenu Réseau Mondiale mivantana eto --- */
+const reseauContent = `
+🌐 RÉSEAU MONDIALE — EXPLICATION FENO
+
+Ny Réseau Mondiale dia tambajotra iraisam-pirenena mampifandray olona, 
+fitaovana ary firenena manontolo. Izy io dia ahitana:
+
+🔗 FIFANDRAISANA MANERAN-TANY
+• Amerika — Afrika — Eoropa — Azia — Océanie
+• Fandefasana angona haingana (fibre optique, satellite)
+• Mampifandray olona an-tapitrisany isan’andro
+
+📡 DATA FLOW
+• Data mandeha amin’ny fibre optique an’arivony km
+• Fifindrana angon-drakitra amin’ny antenne 4G/5G
+• Protokola numérique mifehy ny fifandraisana
+
+🛡️ FIAROVANA
+• Encryption
+• Firewall
+• Cyber sécurité globale
+
+🚀 HO AVINY
+• Internet 7G–8G
+• AI-based routing
+• Cloud mondial intelligent
+`;
+
+function openPanel(type){
+  const panel = document.getElementById("infoPanel");
+  const title = document.getElementById("panelTitle");
+  const text = document.getElementById("panelText");
+  const img = document.getElementById("panelImage");
+
+  if(type === "reseau"){
+    title.innerText = "Réseau Mondiale";
+    text.innerText = reseauContent;
+    img.src = "https://i.imgur.com/z1Z1Z1E.png"; // Sary data-flow background
+  }
+
+  if(type === "pays"){
+    title.innerText = "Pays Mondiale";
+    text.innerText = "Lisitra sy information momba ny firenena rehetra eto an-tany (Afaka ampiarahana raha mila).";
+    img.src = "";
+  }
+
+  panel.style.display = "block";
+}
+
+function closePanel(){
+  document.getElementById("infoPanel").style.display = "none";
+}
+</script>
+
 </body>
 </html>
