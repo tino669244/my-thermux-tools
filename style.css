@@ -1,234 +1,154 @@
-/* --------------------------
-   RESET
--------------------------- */
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:'Consolas', monospace;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
 }
 
-body{
-  background:#000;
-  overflow-x:hidden;
-  color:#00ff99;
+body {
+  background: black;
+  color: #0f0;
+  overflow-x: hidden;
 }
 
-/* --------------------------
-   MATRIX BACKGROUND
--------------------------- */
-#matrix{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:-1;
-  background:#000;
+/* Glow Wall Background */
+#glowwall {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: url("glowwall.jpg") center/cover no-repeat;
+  opacity: 0.35;
+  filter: blur(3px);
+  z-index: -3;
 }
 
-/* --------------------------
-   TOP NAV BUTTONS
--------------------------- */
-.top-buttons{
-  position:fixed;
-  top:15px;
-  left:15px;
-  display:flex;
-  gap:10px;
-  z-index:10;
+/* Matrix overlay */
+#matrix {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -2;
+  opacity: 0.25;
 }
 
-.top-buttons button{
-  padding:10px 20px;
-  border:1px solid #00ff99;
-  background:rgba(0,0,0,0.4);
-  color:#00ff99;
-  cursor:pointer;
-  text-transform:uppercase;
-  transition:0.3s;
-  backdrop-filter:blur(3px);
+/* TOP NAV */
+.top-bar {
+  width: 100%;
+  padding: 20px;
+  background: rgba(0, 20, 0, 0.6);
+  border-bottom: 1px solid #004400;
+  box-shadow: 0 0 20px #00ff77;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
-.top-buttons button:hover{
-  background:#00ff99;
-  color:#000;
-  box-shadow:0 0 10px #00ff99;
+.top-bar h1 {
+  font-size: 28px;
+  color: #00ff88;
+  text-shadow: 0 0 15px #00ff88;
 }
 
-/* --------------------------
-   HEADER
--------------------------- */
-header{
-  text-align:center;
-  margin-top:80px;
-  color:#00ff99;
+.top-bar button {
+  margin-left: 10px;
+  background: black;
+  border: 1px solid #00ff88;
+  color: #00ff88;
+  padding: 8px 15px;
+  cursor: pointer;
+  text-shadow: 0 0 8px #00ff88;
 }
 
-header h1{
-  font-size:3rem;
-  letter-spacing:3px;
-  text-shadow:0 0 15px #00ff99;
+.top-bar button:hover {
+  background: #003300;
 }
 
-header .sub{
-  opacity:0.7;
-  letter-spacing:2px;
+/* MAIN CONTENT */
+.content {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
 }
 
-/* --------------------------
-   MAIN PANELS
--------------------------- */
-.container{
-  width:95%;
-  max-width:1200px;
-  margin:50px auto;
-  display:flex;
-  flex-direction:column;
-  gap:40px;
+.panel {
+  flex: 1;
+  background: rgba(0, 10, 0, 0.7);
+  border: 1px solid #004400;
+  padding: 20px;
+  box-shadow: 0 0 25px #00ff44 inset;
+  backdrop-filter: blur(2px);
 }
 
-.panel{
-  padding:25px;
-  background:rgba(0,0,0,0.55);
-  border:1px solid #00ff99;
-  box-shadow:0 0 20px #003322 inset, 0 0 10px #00ff66;
-  backdrop-filter:blur(4px);
+.panel h2 {
+  margin-bottom: 20px;
+  font-size: 22px;
+  text-shadow: 0 0 12px #00ff66;
 }
 
-.panel h2{
-  margin-bottom:15px;
-  color:#00ffaa;
-  letter-spacing:1px;
-  text-shadow:0 0 10px #00ffaa;
+/* Inputs */
+input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: black;
+  border: 1px solid #00ff55;
+  color: #00ff55;
 }
 
-/* --------------------------
-   QR CODE & BUTTONS
--------------------------- */
-#qrInput{
-  width:100%;
-  padding:10px;
-  margin-bottom:10px;
-  border:1px solid #00ff99;
-  background:rgba(0,0,0,0.4);
-  color:#00ff99;
+button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  background: black;
+  border: 1px solid #00ff55;
+  color: #00ff55;
+  cursor: pointer;
 }
 
-.panel button{
-  margin-top:10px;
-  padding:10px 20px;
-  border:1px solid #00ff99;
-  background:rgba(0,0,0,0.4);
-  color:#00ff99;
-  cursor:pointer;
-  transition:0.3s;
+button:hover {
+  background: #003300;
 }
 
-.panel button:hover{
-  background:#00ff99;
-  color:#000;
+/* Map */
+#mapShell {
+  position: relative;
+  width: 100%;
 }
 
-#qrBox{
-  margin-top:15px;
+#worldmap {
+  width: 100%;
+  filter: drop-shadow(0 0 18px #00ff66);
 }
 
-/* --------------------------
-   SOCIAL BUTTONS
--------------------------- */
-.socials{
-  margin-top:15px;
-  display:flex;
-  gap:10px;
-  flex-wrap:wrap;
+#rayCanvas {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
 }
 
-/* --------------------------
-   MAP PANEL
--------------------------- */
-.map-panel{
-  position:relative;
+/* Popup */
+.popup {
+  position: fixed;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  background: #000;
+  padding: 20px;
+  border: 2px solid #00ff66;
+  box-shadow: 0 0 40px #00ff55;
+  display: none;
 }
 
-#mapBox{
-  width:100%;
-  overflow:hidden;
-  border:1px solid #00ff55;
-  padding:10px;
-  background:rgba(0,0,0,0.4);
+.close {
+  float: right;
+  cursor: pointer;
+  color: red;
+  font-size: 20px;
 }
 
-#worldmap{
-  width:100%;
-  filter:drop-shadow(0 0 10px #00ff66);
-}
-
-.source{
-  margin-top:10px;
-  font-size:0.9rem;
-  opacity:0.6;
-}
-
-/* --------------------------
-   POPUP PANEL
--------------------------- */
-.panel-popup{
-  display:none;
-  position:fixed;
-  top:50%;
-  left:50%;
-  transform:translate(-50%, -50%);
-  width:90%;
-  max-width:700px;
-  background:rgba(0,0,0,0.75);
-  border:1px solid #00ff99;
-  box-shadow:0 0 25px #00ff99;
-  padding:25px;
-  z-index:999;
-  backdrop-filter:blur(6px);
-}
-
-.panel-popup h2{
-  margin-bottom:10px;
-  color:#00ffcc;
-  text-shadow:0 0 12px #00ffcc;
-}
-
-.panel-popup p{
-  white-space:pre-line;
-  line-height:1.6;
-  color:#aaffdd;
-}
-
-.panel-popup img{
-  margin-top:20px;
-  width:100%;
-  border-radius:10px;
-  box-shadow:0 0 15px #00ff99;
-}
-
-.close{
-  position:absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
-  font-size:20px;
-  color:#00ff99;
-  text-shadow:0 0 10px #00ff99;
-}
-
-.close:hover{
-  color:#ff4444;
-  text-shadow:0 0 10px #ff0000;
-}
-
-/* --------------------------
-   FOOTER
--------------------------- */
-footer{
-  margin:50px 0;
-  text-align:center;
-  opacity:0.5;
-  color:#00ff99;
+/* Responsive */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+  }
 }
