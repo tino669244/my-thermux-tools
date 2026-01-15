@@ -70,7 +70,9 @@ function openPanel(type) {
     document.getElementById("panelTitle").textContent = "PAYS MONDIAL";
     document.getElementById("panelText").innerHTML = `
     Afrique, Europe, Amériques, Asie, Océanie<br>
-    Lisitry ny firenena rehetra misokatra ao<br>`;
+    Madagascar, Bresil, France, Grande Bretagne<br>
+    Népal, Monaco, Montenegro<br>
+    Manerana an'izao tontolo izao ny fizarana tambazotra<br>`;
   }
 }
 
