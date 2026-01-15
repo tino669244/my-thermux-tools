@@ -17,26 +17,27 @@
 <audio id="matrixAudio" loop>
   <source src="matrix-soft.mp3" type="audio/mpeg">
 </audio>
-  
+
 <!-- TOP NAV -->
 <header class="top-bar">
   <h1>TINO ANDRAINA</h1>
-  <div>
-    <button onclick="openPanel('reseau')">RÉSEAU MONDIALE</button>
-    <button onclick="openPanel('pays')">PAYS MONDIALE</button>
+  <div class="nav-buttons">
+    <button onclick="openPanel('reseau')">RÉSEAU MONDIAL</button>
+    <button onclick="openPanel('pays')">PAYS MONDIAL</button>
   </div>
 </header>
 
-<!-- MAIN WRAPPER -->
+<!-- MAIN -->
 <div class="content">
 
-  <!-- LEFT : QR CODE -->
+  <!-- QR CODE PANEL -->
   <section class="panel">
     <h2>QR CODE</h2>
 
     <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook...">
     <button onclick="generateQR()">Generate</button>
     <button onclick="downloadQR()">Download</button>
+
     <div id="qrBox"></div>
 
     <div class="socials">
@@ -47,19 +48,21 @@
     </div>
   </section>
 
-  <!-- RIGHT : CYBER MAP -->
+  <!-- CYBER MAP -->
   <section class="panel">
     <h2>Cyber Map</h2>
+
     <div id="mapShell">
       <img id="worldmap" src="world-glow.png">
       <canvas id="rayCanvas"></canvas>
     </div>
+
     <p class="source">SOURCE : Madagascar → Réseau global</p>
   </section>
 
 </div>
 
-<!-- POPUP PANEL -->
+<!-- POPUP -->
 <div id="infoPanel" class="popup">
   <span class="close" onclick="closePanel()">✖</span>
   <h2 id="panelTitle"></h2>
