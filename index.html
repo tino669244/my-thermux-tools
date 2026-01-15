@@ -1,33 +1,40 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tino Andraina • Global Hacker Network</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<link rel="stylesheet" href="style.css" />
+<link rel="stylesheet" href="style.css">
 </head>
-  
+
 <body>
 
+<!-- BACKGROUND -->
+<div id="glowwall"></div>
 <canvas id="matrix"></canvas>
 
-<!-- NAV TOP -->
-<div class="top-buttons">
-  <button onclick="openPanel('reseau')">Réseau mondiale</button>
-  <button onclick="openPanel('pays')">Pays mondiale</button>
-</div>
+<!-- AUDIO -->
+<audio id="matrixAudio" loop>
+  <source src="matrix-soft.mp3" type="audio/mpeg">
+</audio>
 
-<header>
+<!-- TOP NAV -->
+<header class="top-bar">
   <h1>TINO ANDRAINA</h1>
-  <p class="sub">Global Hacker Network • 2026</p>
+  <div>
+    <button onclick="openPanel('reseau')">RÉSEAU MONDIALE</button>
+    <button onclick="openPanel('pays')">PAYS MONDIALE</button>
+  </div>
 </header>
 
-<main class="container">
+<!-- MAIN WRAPPER -->
+<div class="content">
 
-  <!-- QR CODE -->
+  <!-- LEFT : QR CODE -->
   <section class="panel">
-    <h2>QR Code</h2>
-    <input id="qrInput" placeholder="Lien TikTok / YouTube / Facebook / IG" />
+    <h2>QR CODE</h2>
+
+    <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook...">
     <button onclick="generateQR()">Generate</button>
     <button onclick="downloadQR()">Download</button>
     <div id="qrBox"></div>
@@ -40,108 +47,27 @@
     </div>
   </section>
 
-  <!-- MAP HACKER LUMINEUX -->
-  <section class="panel map-panel">
-    <h2>Cyber Map — Monde</h2>
-
-    <div id="mapBox">
-      <!-- SVG MAP HACKER LUMINEUX -->
-      <svg id="worldmap" viewBox="0 0 2000 1100">
-
-        <!-- BACKGROUND GRID -->
-        <rect width="2000" height="1100" fill="none" stroke="#003300" stroke-width="1" 
-          stroke-dasharray="5 8" opacity="0.3" />
-
-        <!-- MAP NEON (outline continent) -->
-        <image href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
-               width="2000" height="1100"
-               style="filter: drop-shadow(0 0 12px #00ff66);" />
-
-        <!-- Madagascar marker -->
-        <circle cx="1320" cy="820" r="10" fill="#00ff66" />
-
-        <!-- Rays -->
-        <g id="rays"></g>
-
-      </svg>
+  <!-- RIGHT : CYBER MAP -->
+  <section class="panel">
+    <h2>Cyber Map</h2>
+    <div id="mapShell">
+      <img id="worldmap" src="world-glow.png">
+      <canvas id="rayCanvas"></canvas>
     </div>
-
-    <p class="source">SOURCE : Madagascar → Monde connecté</p>
+    <p class="source">SOURCE : Madagascar → Réseau global</p>
   </section>
 
-</main>
-
-<!-- POPUP PANEL -->
-<div id="infoPanel" class="panel-popup">
-  <span class="close" onclick="closePanel()">✖</span>
-  <h2 id="panelTitle"></h2>
-
-  <!-- ATO NO HAPETRAKO ILAY CONTENU FENO -->
-  <p id="panelText" style="white-space: pre-line;"></p>
-
-  <div class="rotate360">
-    <img id="panelImage" src="" />
-  </div>
 </div>
 
-<footer>© 2026 • Tino Andraina</footer>
+<!-- POPUP PANEL -->
+<div id="infoPanel" class="popup">
+  <span class="close" onclick="closePanel()">✖</span>
+  <h2 id="panelTitle"></h2>
+  <p id="panelText"></p>
+</div>
+
+<footer>© 2026 • Tino Andraina • Global Hacker Network</footer>
 
 <script src="script.js"></script>
-
-<script>
-/* --- Asiana contenu Réseau Mondiale mivantana eto --- */
-const reseauContent = `
-🌐 RÉSEAU MONDIALE — EXPLICATION FENO
-
-Ny Réseau Mondiale dia tambajotra iraisam-pirenena mampifandray olona, 
-fitaovana ary firenena manontolo. Izy io dia ahitana:
-
-🔗 FIFANDRAISANA MANERAN-TANY
-• Amerika — Afrika — Eoropa — Azia — Océanie
-• Fandefasana angona haingana (fibre optique, satellite)
-• Mampifandray olona an-tapitrisany isan’andro
-
-📡 DATA FLOW
-• Data mandeha amin’ny fibre optique an’arivony km
-• Fifindrana angon-drakitra amin’ny antenne 4G/5G
-• Protokola numérique mifehy ny fifandraisana
-
-🛡️ FIAROVANA
-• Encryption
-• Firewall
-• Cyber sécurité globale
-
-🚀 HO AVINY
-• Internet 7G–8G
-• AI-based routing
-• Cloud mondial intelligent
-`;
-
-function openPanel(type){
-  const panel = document.getElementById("infoPanel");
-  const title = document.getElementById("panelTitle");
-  const text = document.getElementById("panelText");
-  const img = document.getElementById("panelImage");
-
-  if(type === "reseau"){
-    title.innerText = "Réseau Mondiale";
-    text.innerText = reseauContent;
-    img.src = "https://i.imgur.com/z1Z1Z1E.png"; // Sary data-flow background
-  }
-
-  if(type === "pays"){
-    title.innerText = "Pays Mondiale";
-    text.innerText = "Lisitra sy information momba ny firenena rehetra eto an-tany (Afaka ampiarahana raha mila).";
-    img.src = "";
-  }
-
-  panel.style.display = "block";
-}
-
-function closePanel(){
-  document.getElementById("infoPanel").style.display = "none";
-}
-</script>
-
 </body>
 </html>
