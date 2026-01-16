@@ -47,7 +47,7 @@ const worldMap = document.getElementById("worldmap");
 function syncPulseWithAudio() {
   if (audio.paused) return;
 
-  const boost = Math.random() * 0.15 + 1; // 1 → 1.15
+  const boost = Math.random() * 0.15 + 1;
   worldMap.style.transform = `scale(${boost}) rotate(${Date.now() / 100 % 360}deg)`;
 
   setTimeout(syncPulseWithAudio, 120);
@@ -57,7 +57,7 @@ audio.onplay = () => syncPulseWithAudio();
 
 
 
-/* ========== CYBER RAY LINES FROM MADAGASCAR ========== */
+/* ========== CYBER RAY LINES ========== */
 const rayCanvas = document.getElementById("rayCanvas");
 const rctx = rayCanvas.getContext("2d");
 
@@ -68,19 +68,19 @@ function resizeRayCanvas() {
 resizeRayCanvas();
 window.addEventListener("resize", resizeRayCanvas);
 
-// Coordinates approximatives Madagascar
-let mgX = 540; // adjust if needed
+// Madagascar coordinates (approx)
+let mgX = 540;
 let mgY = 350;
 
 function drawRay() {
   rctx.clearRect(0, 0, rayCanvas.width, rayCanvas.height);
 
   const targets = [
-    { x: 150, y: 110 }, // AFRIQUE OUEST
-    { x: 250, y: 70 },  // EUROPE
-    { x: 480, y: 60 },  // ASIE
-    { x: 120, y: 300 }, // AMÉRIQUE SUD
-    { x: 430, y: 260 }  // AUSTRALIE
+    { x: 150, y: 110 },
+    { x: 250, y: 70 },
+    { x: 480, y: 60 },
+    { x: 120, y: 300 },
+    { x: 430, y: 260 }
   ];
 
   targets.forEach(t => {
