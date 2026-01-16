@@ -1,4 +1,3 @@
-/* RESET */
 * {
   margin: 0;
   padding: 0;
@@ -12,7 +11,7 @@ body {
   overflow-x: hidden;
 }
 
-/* BACKGROUND WALL */
+/* BACKGROUND IMAGE */
 #glowwall {
   position: fixed;
   top: 0;
@@ -49,12 +48,12 @@ body {
 }
 
 .top-bar h1 {
-  font-size: 24px;
+  font-size: 22px;
   color: #00ff88;
   text-shadow: 0 0 12px #00ff88;
 }
 
-.nav-buttons button {
+.top-bar button {
   background: black;
   border: 1px solid #00ff88;
   color: #00ff88;
@@ -62,11 +61,11 @@ body {
   cursor: pointer;
   font-size: 14px;
 }
-.nav-buttons button:hover {
+.top-bar button:hover {
   background: #003300;
 }
 
-/* MAIN LAYOUT */
+/* LAYOUT */
 .content {
   display: flex;
   gap: 20px;
@@ -88,59 +87,31 @@ body {
   text-shadow: 0 0 10px #00ff66;
 }
 
-/* FORMS */
-input,
-button {
+input, button {
   width: 100%;
   padding: 8px;
   margin-bottom: 10px;
   background: black;
   border: 1px solid #00ff55;
   color: #00ff55;
-  cursor: pointer;
 }
-button:hover {
-  background: #003300;
-}
+button:hover { background: #003300; }
 
-/* CYBER MAP */
+/* MAP */
 #mapShell {
   position: relative;
 }
-
 #worldmap {
   width: 100%;
   filter: drop-shadow(0 0 18px #00ff66);
-  transform-origin: center;
-  animation: softRotate 22s linear infinite,
-             softPulse 1.4s ease-in-out infinite;
+  transition: 0.15s ease-out;
 }
-
-/* ★ ROTATION MORA MORA ★ */
-@keyframes softRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-/* ★ PULSE MANARAKA NY INSTRU ★ */
-@keyframes softPulse {
-  0%   { filter: drop-shadow(0 0 12px #00ff55); transform: scale(1); }
-  50%  { filter: drop-shadow(0 0 25px #00ff99); transform: scale(1.05); }
-  100% { filter: drop-shadow(0 0 12px #00ff55); transform: scale(1); }
-}
-
 #rayCanvas {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-}
-
-.source {
-  margin-top: 10px;
-  font-size: 13px;
-  opacity: 0.7;
 }
 
 /* POPUP */
@@ -167,13 +138,7 @@ button:hover {
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .content {
-    flex-direction: column;
-  }
-  .top-bar h1 {
-    font-size: 18px;
-  }
-  .panel h2 {
-    font-size: 18px;
-  }
+  .content { flex-direction: column; }
+  .top-bar h1 { font-size: 18px; }
+  .panel h2 { font-size: 18px; }
 }
