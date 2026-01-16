@@ -1,43 +1,41 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="UTF-8" />
 <title>Tino Andraina • Global Hacker Network</title>
-<link rel="stylesheet" href="style.css">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="style.css" />
 </head>
 
 <body>
 
-<!-- BACKGROUND -->
-<div id="glowwall"></div>
-<canvas id="matrix"></canvas>
+<!-- MATRIX BACKGROUND -->
+<canvas id="matrixCanvas"></canvas>
 
-<!-- AUDIO -->
-<audio id="matrixAudio" loop>
-  <source src="matrix-soft.mp3" type="audio/mpeg">
-</audio>
+<!-- WORLD GLOW (rotating + audio-reactive) -->
+<div class="world-container">
+  <img id="worldGlow" src="world-glow.png" alt="world glow">
+</div>
 
-<!-- TOP NAV -->
-<header class="top-bar">
+<!-- NAV TOP -->
+<div class="top-buttons">
+  <button onclick="openPanel('reseau')">Réseau mondiale</button>
+  <button onclick="openPanel('pays')">Pays mondiale</button>
+</div>
+
+<header>
   <h1>TINO ANDRAINA</h1>
-  <div class="nav-buttons">
-    <button onclick="openPanel('reseau')">RÉSEAU MONDIAL</button>
-    <button onclick="openPanel('pays')">PAYS MONDIAL</button>
-  </div>
+  <p class="sub">Global Hacker Network • 2026</p>
 </header>
 
-<!-- MAIN -->
-<div class="content">
+<main class="container">
 
-  <!-- QR CODE PANEL -->
+  <!-- QR CODE -->
   <section class="panel">
-    <h2>QR CODE</h2>
-
-    <input id="qrInput" placeholder="Lien TikTok, YouTube, Facebook...">
+    <h2>QR Code</h2>
+    <input id="qrInput" placeholder="Lien TikTok / YouTube / Facebook / IG" />
     <button onclick="generateQR()">Generate</button>
     <button onclick="downloadQR()">Download</button>
-
     <div id="qrBox"></div>
 
     <div class="socials">
@@ -48,28 +46,48 @@
     </div>
   </section>
 
-  <!-- CYBER MAP -->
-  <section class="panel">
-    <h2>Cyber Map</h2>
+  <!-- MAP HACKER LUMINEUX -->
+  <section class="panel map-panel">
+    <h2>Cyber Map — Monde</h2>
 
-    <div id="mapShell">
-      <img id="worldmap" src="world-glow.png">
-      <canvas id="rayCanvas"></canvas>
+    <div id="mapBox">
+      <svg id="worldmap" viewBox="0 0 2000 1100">
+
+        <!-- BACKGROUND GRID -->
+        <rect width="2000" height="1100" fill="none" stroke="#003300" stroke-width="1"
+            stroke-dasharray="5 8" opacity="0.3" />
+
+        <!-- MAP NEON -->
+        <image href="https://upload.wikimedia.org/wikipedia/commons/8/80/World_map_-_low_resolution.svg"
+            width="2000" height="1100"
+            style="filter: drop-shadow(0 0 12px #00ff66);" />
+
+        <!-- Madagascar marker -->
+        <circle cx="1320" cy="820" r="10" fill="#00ff66" />
+
+        <g id="rays"></g>
+
+      </svg>
     </div>
 
-    <p class="source">SOURCE : Madagascar → Réseau global</p>
+    <p class="source">SOURCE : Madagascar → Monde connecté</p>
   </section>
+</main>
 
-</div>
-
-<!-- POPUP -->
-<div id="infoPanel" class="popup">
+<!-- POPUP PANEL -->
+<div id="infoPanel" class="panel-popup">
   <span class="close" onclick="closePanel()">✖</span>
   <h2 id="panelTitle"></h2>
   <p id="panelText"></p>
+  <div class="rotate360">
+    <img id="panelImage" src="" />
+  </div>
 </div>
 
-<footer>© 2026 • Tino Andraina • Global Hacker Network</footer>
+<!-- AUDIO -->
+<audio id="hackerAudio" src="matrix-rain.mp3" preload="auto"></audio>
+
+<footer>© 2026 • Tino Andraina</footer>
 
 <script src="script.js"></script>
 </body>
