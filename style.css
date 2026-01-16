@@ -104,7 +104,6 @@ button:hover { background: #003300; }
 #worldmap {
   width: 100%;
   filter: drop-shadow(0 0 18px #00ff66);
-  transition: 0.15s ease-out;
 }
 #rayCanvas {
   position: absolute;
