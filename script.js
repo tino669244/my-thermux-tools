@@ -1,13 +1,13 @@
-/* ========== MATRIX RAIN BACKGROUND ========== */
+/* MATRIX RAIN */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const letters = "TINOANDRAINA01101001011001";
+const letters = "TINOANDRAINA011010010";
 const size = 14;
-const columns = Math.floor(canvas.width / size);
+const columns = canvas.width / size;
 const drops = Array.from({ length: columns }, () => 1);
 
 function matrixRain() {
@@ -27,77 +27,46 @@ function matrixRain() {
 }
 setInterval(matrixRain, 35);
 
-
-
-/* ========== AUDIO PLAY ========== */
+/* AUDIO ANALYSER */
 const audio = document.getElementById("matrixAudio");
+let audioCtx, analyser, dataArray;
 
-document.body.addEventListener(
-  "click",
-  () => {
-    audio.play();
-  },
-  { once: true }
-);
+function setupAudio() {
+  audioCtx = new AudioContext();
+  analyser = audioCtx.createAnalyser();
+  const source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
 
-
-/* ========== AUDIO SYNC WITH MAP PULSE ========== */
-const worldMap = document.getElementById("worldmap");
-
-function syncPulseWithAudio() {
-  if (audio.paused) return;
-
-  const boost = Math.random() * 0.15 + 1;
-  worldMap.style.transform = `scale(${boost}) rotate(${Date.now() / 100 % 360}deg)`;
-
-  setTimeout(syncPulseWithAudio, 120);
+  analyser.fftSize = 256;
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
 }
 
-audio.onplay = () => syncPulseWithAudio();
+document.addEventListener("click", () => {
+  if (!audioCtx) setupAudio();
+  audio.play();
+});
 
+/* MAP EFFECTS */
+const world = document.getElementById("worldmap");
 
+function animateMap() {
+  if (!analyser) return requestAnimationFrame(animateMap);
 
-/* ========== CYBER RAY LINES ========== */
-const rayCanvas = document.getElementById("rayCanvas");
-const rctx = rayCanvas.getContext("2d");
+  analyser.getByteFrequencyData(dataArray);
+  const bass = dataArray[1] / 255;
 
-function resizeRayCanvas() {
-  rayCanvas.width = document.getElementById("mapShell").offsetWidth;
-  rayCanvas.height = document.getElementById("mapShell").offsetHeight;
+  const scale = 1 + bass * 0.25;
+  const rotate = bass * 6;
+
+  world.style.transform = `scale(${scale}) rotate(${rotate}deg)`;
+  world.style.filter = `drop-shadow(0 0 ${10 + bass * 40}px #00ff66)`;
+
+  requestAnimationFrame(animateMap);
 }
-resizeRayCanvas();
-window.addEventListener("resize", resizeRayCanvas);
+animateMap();
 
-// Madagascar coordinates (approx)
-let mgX = 540;
-let mgY = 350;
-
-function drawRay() {
-  rctx.clearRect(0, 0, rayCanvas.width, rayCanvas.height);
-
-  const targets = [
-    { x: 150, y: 110 },
-    { x: 250, y: 70 },
-    { x: 480, y: 60 },
-    { x: 120, y: 300 },
-    { x: 430, y: 260 }
-  ];
-
-  targets.forEach(t => {
-    rctx.strokeStyle = "#00ff88";
-    rctx.lineWidth = 2;
-    rctx.beginPath();
-    rctx.moveTo(mgX, mgY);
-    rctx.lineTo(t.x, t.y);
-    rctx.stroke();
-  });
-}
-
-setInterval(drawRay, 200);
-
-
-
-/* ========== QR GENERATOR ========== */
+/* QR CODE */
 function generateQR() {
   let link = document.getElementById("qrInput").value;
   document.getElementById("qrBox").innerHTML =
@@ -117,9 +86,7 @@ function quick(url) {
   generateQR();
 }
 
-
-
-/* ========== POPUP PANEL ========== */
+/* POPUP PANELS */
 function openPanel(type) {
   const p = document.getElementById("infoPanel");
   p.style.display = "block";
@@ -127,19 +94,19 @@ function openPanel(type) {
   if (type === "reseau") {
     document.getElementById("panelTitle").textContent = "RÉSEAU MONDIAL";
     document.getElementById("panelText").innerHTML = `
-      • Fibre optique & satellite mondiaux<br>
-      • Data flow maneran-tany<br>
-      • Encryption | Firewall | Cyber Security<br>
-      • Cloud & AI routing global<br>`;
+    • Fibre optique & satellite mondiaux<br>
+    • Data flow maneran-tany<br>
+    • Encryption, Firewall, Cyber Security<br>
+    • Cloud & AI routing global<br>`;
   }
 
   if (type === "pays") {
     document.getElementById("panelTitle").textContent = "PAYS MONDIAL";
     document.getElementById("panelText").innerHTML = `
-      Afrique, Europe, Amériques, Asie, Océanie<br>
-      Madagascar, Brésil, France, UK<br>
-      Népal, Monaco, Montenegro<br>
-      Fizarana tambazotra maneran-tany<br>`;
+    Afrique, Europe, Amériques, Asie, Océanie<br>
+    Madagascar, Bresil, France, Grande Bretagne<br>
+    Népal, Monaco, Montenegro<br>
+    Manerana an'izao tontolo izao ny fizarana tambazotra<br>`;
   }
 }
 
