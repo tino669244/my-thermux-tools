@@ -1,13 +1,13 @@
-/* MATRIX RAIN */
+/* ========== MATRIX RAIN BACKGROUND ========== */
 const canvas = document.getElementById("matrix");
 const ctx = canvas.getContext("2d");
 
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
-const letters = "TINOANDRAINA011010010";
+const letters = "TINOANDRAINA01101001011001";
 const size = 14;
-const columns = canvas.width / size;
+const columns = Math.floor(canvas.width / size);
 const drops = Array.from({ length: columns }, () => 1);
 
 function matrixRain() {
@@ -28,67 +28,76 @@ function matrixRain() {
 setInterval(matrixRain, 35);
 
 
-/* AUDIO AUTO-PLAY */
-const mainAudio = document.getElementById("matrixAudio");
+
+/* ========== AUDIO PLAY ========== */
+const audio = document.getElementById("matrixAudio");
+
 document.body.addEventListener(
   "click",
   () => {
-    mainAudio.play();
-    initBeatReactive(); // rehefa mandeha ny audio → miditra ny effect
+    audio.play();
   },
   { once: true }
 );
 
 
-/* -----------------------------
-   BEAT REACTIVE WORLD MAP
------------------------------- */
+/* ========== AUDIO SYNC WITH MAP PULSE ========== */
+const worldMap = document.getElementById("worldmap");
 
-const world = document.getElementById("worldmap");
+function syncPulseWithAudio() {
+  if (audio.paused) return;
 
-let audioCtx, analyser, dataArray;
+  const boost = Math.random() * 0.15 + 1; // 1 → 1.15
+  worldMap.style.transform = `scale(${boost}) rotate(${Date.now() / 100 % 360}deg)`;
 
-function initBeatReactive() {
-  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
-  const source = audioCtx.createMediaElementSource(mainAudio);
-
-  analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 256;
-
-  source.connect(analyser);
-  analyser.connect(audioCtx.destination);
-
-  dataArray = new Uint8Array(analyser.frequencyBinCount);
-
-  animateWorld(); // MANOMBOKA ANIMATION
+  setTimeout(syncPulseWithAudio, 120);
 }
 
+audio.onplay = () => syncPulseWithAudio();
 
-function animateWorld() {
-  requestAnimationFrame(animateWorld);
 
-  analyser.getByteFrequencyData(dataArray);
 
-  // Average amplitude
-  let sum = 0;
-  for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
-  const level = sum / dataArray.length;
+/* ========== CYBER RAY LINES FROM MADAGASCAR ========== */
+const rayCanvas = document.getElementById("rayCanvas");
+const rctx = rayCanvas.getContext("2d");
 
-  // Rotation miadana (tsaiky be)
-  const rotation = Date.now() / 90;
+function resizeRayCanvas() {
+  rayCanvas.width = document.getElementById("mapShell").offsetWidth;
+  rayCanvas.height = document.getElementById("mapShell").offsetHeight;
+}
+resizeRayCanvas();
+window.addEventListener("resize", resizeRayCanvas);
 
-  // Midoboka (pulse) manaraka ny instru
-  const scale = 1 + level / 260;
+// Coordinates approximatives Madagascar
+let mgX = 540; // adjust if needed
+let mgY = 350;
 
-  // Glow miovaova
-  const glow = Math.min(90, level / 1.3 + 20);
+function drawRay() {
+  rctx.clearRect(0, 0, rayCanvas.width, rayCanvas.height);
 
-  world.style.transform = `rotate(${rotation}deg) scale(${scale})`;
-  world.style.filter = `drop-shadow(0 0 ${glow}px #00ffdd) brightness(1.5)`;
+  const targets = [
+    { x: 150, y: 110 }, // AFRIQUE OUEST
+    { x: 250, y: 70 },  // EUROPE
+    { x: 480, y: 60 },  // ASIE
+    { x: 120, y: 300 }, // AMÉRIQUE SUD
+    { x: 430, y: 260 }  // AUSTRALIE
+  ];
+
+  targets.forEach(t => {
+    rctx.strokeStyle = "#00ff88";
+    rctx.lineWidth = 2;
+    rctx.beginPath();
+    rctx.moveTo(mgX, mgY);
+    rctx.lineTo(t.x, t.y);
+    rctx.stroke();
+  });
 }
 
+setInterval(drawRay, 200);
 
-/* QR CODE */
+
+
+/* ========== QR GENERATOR ========== */
 function generateQR() {
   let link = document.getElementById("qrInput").value;
   document.getElementById("qrBox").innerHTML =
@@ -109,7 +118,8 @@ function quick(url) {
 }
 
 
-/* POPUP PANELS */
+
+/* ========== POPUP PANEL ========== */
 function openPanel(type) {
   const p = document.getElementById("infoPanel");
   p.style.display = "block";
@@ -117,19 +127,19 @@ function openPanel(type) {
   if (type === "reseau") {
     document.getElementById("panelTitle").textContent = "RÉSEAU MONDIAL";
     document.getElementById("panelText").innerHTML = `
-    • Fibre optique & satellite mondiaux<br>
-    • Data flow maneran-tany<br>
-    • Encryption, Firewall, Cyber Security<br>
-    • Cloud & AI routing global<br>`;
+      • Fibre optique & satellite mondiaux<br>
+      • Data flow maneran-tany<br>
+      • Encryption | Firewall | Cyber Security<br>
+      • Cloud & AI routing global<br>`;
   }
 
   if (type === "pays") {
     document.getElementById("panelTitle").textContent = "PAYS MONDIAL";
     document.getElementById("panelText").innerHTML = `
-    Afrique, Europe, Amériques, Asie, Océanie<br>
-    Madagascar, Brésil, France, UK<br>
-    Népal, Monaco, Montenegro<br>
-    Tambazotra manerantany<br>`;
+      Afrique, Europe, Amériques, Asie, Océanie<br>
+      Madagascar, Brésil, France, UK<br>
+      Népal, Monaco, Montenegro<br>
+      Fizarana tambazotra maneran-tany<br>`;
   }
 }
 
