@@ -27,10 +27,66 @@ function matrixRain() {
 }
 setInterval(matrixRain, 35);
 
-/* AUDIO AUTO */
-document.body.addEventListener("click", () => {
-  document.getElementById("matrixAudio").play();
-}, { once: true });
+
+/* AUDIO AUTO-PLAY */
+const mainAudio = document.getElementById("matrixAudio");
+document.body.addEventListener(
+  "click",
+  () => {
+    mainAudio.play();
+    initBeatReactive(); // rehefa mandeha ny audio → miditra ny effect
+  },
+  { once: true }
+);
+
+
+/* -----------------------------
+   BEAT REACTIVE WORLD MAP
+------------------------------ */
+
+const world = document.getElementById("worldmap");
+
+let audioCtx, analyser, dataArray;
+
+function initBeatReactive() {
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  const source = audioCtx.createMediaElementSource(mainAudio);
+
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 256;
+
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+
+  dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+  animateWorld(); // MANOMBOKA ANIMATION
+}
+
+
+function animateWorld() {
+  requestAnimationFrame(animateWorld);
+
+  analyser.getByteFrequencyData(dataArray);
+
+  // Average amplitude
+  let sum = 0;
+  for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+  const level = sum / dataArray.length;
+
+  // Rotation miadana (tsaiky be)
+  const rotation = Date.now() / 90;
+
+  // Midoboka (pulse) manaraka ny instru
+  const scale = 1 + level / 260;
+
+  // Glow miovaova
+  const glow = Math.min(90, level / 1.3 + 20);
+
+  world.style.transform = `rotate(${rotation}deg) scale(${scale})`;
+  world.style.filter = `drop-shadow(0 0 ${glow}px #00ffdd) brightness(1.5)`;
+}
+
 
 /* QR CODE */
 function generateQR() {
@@ -52,6 +108,7 @@ function quick(url) {
   generateQR();
 }
 
+
 /* POPUP PANELS */
 function openPanel(type) {
   const p = document.getElementById("infoPanel");
@@ -70,9 +127,9 @@ function openPanel(type) {
     document.getElementById("panelTitle").textContent = "PAYS MONDIAL";
     document.getElementById("panelText").innerHTML = `
     Afrique, Europe, Amériques, Asie, Océanie<br>
-    Madagascar, Bresil, France, Grande Bretagne<br>
+    Madagascar, Brésil, France, UK<br>
     Népal, Monaco, Montenegro<br>
-    Manerana an'izao tontolo izao ny fizarana tambazotra<br>`;
+    Tambazotra manerantany<br>`;
   }
 }
 
